@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab2___AED"
+        
         mc:Ignorable="d"
         Title="MainWindow" 
-        Height="450"
-        MaxHeight="450"
+        Height="500"
+        MaxHeight="500"
         MinHeight="450"
         Width="800"
         MaxWidth="800"
@@ -15,52 +16,98 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
+        Icon="Iconos/caht.jpeg"
+        
         >
 
     <Window.Resources>
 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/Dictionary1.xaml"/>
+                <ResourceDictionary Source="styles/dictionary1.xaml"/>
+                <ResourceDictionary Source="styles/imageStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
     </Window.Resources>
 
     <Grid>
-        <Border Style="{StaticResource PanelesAplicacion}" Background='{StaticResource BackgroundGeneral}' Width="222" Margin="0,0,578,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="74*"/>
+            <RowDefinition Height="169*"/>
+            <RowDefinition Height="257*"/>
+        </Grid.RowDefinitions>
 
-
-
-
+        <!-- borde del Nav bar-->
+        <Border Style="{StaticResource PanelesAplicacion}" Background='{StaticResource BackgroundGeneral}' CornerRadius="0,0,0,10" Margin="-3,33,643,-3" Grid.RowSpan="3">
 
             <StackPanel HorizontalAlignment="Center" Height="450" VerticalAlignment="Center" Width="222">
 
-
                 <StackPanel Margin="0,0,0,20">
 
-                    <Button Width="135" Height="50">
+                    <Button Width="135" Height="50" x:Name="BotonPresentacion" Click="BotonPresentacion_Click">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="/Iconos/cerrar-sesion-alt.png" Width="36" Height="22"/>
-                            <TextBlock Text="Salir" Foreground="{StaticResource ColorLetras}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Image Source="/Iconos/usuario-del-portapapeles.png" Style="{StaticResource StyleImageNavar}" Width="29" Margin="0,0,5,0" Height="30"/>
+                            <TextBlock Text="Presentacion" Foreground="{StaticResource ColorLetras}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
 
-                    <Button Width="135" Height="50">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Iconos/sonido-de-timbre.png" Height="36" Width="22" Margin="20,0,5,0" />
-                            <TextBlock Text="Iglesia" Foreground="{StaticResource ColorLetras}" VerticalAlignment="Center" Width="44" Margin="10,0,0,0"/>
+                    <Button Width="135" Height="50" x:Name="btnIglesia" Click="btnIglesia_Click">
+                        <StackPanel Orientation="Horizontal" Width="81">
+                            <Image Source="/Iconos/sonido-de-timbre.png" Style="{StaticResource StyleImageNavar}" Width="25" />
+                            <TextBlock Text="Iglesia" Foreground="{StaticResource ColorLetras}" VerticalAlignment="Center" Width="57" Margin="5,0,0,0"/>
                         </StackPanel>
                     </Button>
 
+                    <Button Width="135" Height="50" Click="btnClinica_Click">
+                        <StackPanel Orientation="Horizontal" Width="115">
+                            <Image Source="/Iconos/dientes-abiertos.png" Style="{StaticResource StyleImageNavar}" Width="27"/>
+                            <TextBlock Text="Odontologia" Foreground="{StaticResource ColorLetras}" VerticalAlignment="Center" Width="82" Margin="5,0,0,0"/>
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
+
+            </StackPanel>
+
+        </Border>
+
+        <!-- borde De visualizacion de UI -->
+        <Border Style="{StaticResource PanelesAplicacion}" Background='{StaticResource BackgroundSecundario}' CornerRadius="0,0,10,0" Margin="148,33,0,-3" Grid.RowSpan="3">
+
+            <StackPanel>
+
+                <local:Iglesia x:Name="IglesiaUI" Visibility="Collapsed" Height="447" Width="644" Margin="0,10,0,5" />
+
+                <local:Presentacion x:Name="Presentacion" Visibility="Collapsed" HorizontalAlignment="Center" Height="447" Width="644" Margin="0,10,0,5"/>
+
+                <local:Clinica x:Name="ClinicaUI" Visibility="Collapsed" Height="447" Width="644" Margin="0,10,0,5"/>
+                
+            </StackPanel>
+
+        </Border>
+
+        <!-- borde del header -->
+        <Border Style="{StaticResource Header}" HorizontalAlignment="Center" Height="36" VerticalAlignment="Top" Width="800" CornerRadius="10,10,0,0" MouseDown="BarraSuperior_MouseDown">
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="666,0,0,0" Width="129">
+
+                <Image Source="/Iconos/caht.jpeg" />
+
+                <Button Width="51" Height="33" Style="{StaticResource BotonesHeader}" Click="btnMinimizar_Click" HorizontalAlignment="Right">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Iconos/minimizar-ventana.png" Height="21" Width="46" />
+                    </StackPanel>
+                </Button>
+                <Button Width="51" Height="30" Style="{StaticResource BotonesHeader}" Click="btnCerrar_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Iconos/cerrar-sesion-alt.png" Height="28" Width="42" />
+                    </StackPanel>
+                </Button>
 
 
             </StackPanel>
+
         </Border>
-        <Border Style="{StaticResource PanelesAplicacion}" Background='{StaticResource BackgroundSecundario}' Margin="217,0,0,0"/>
-
-
 
     </Grid>
 </Window>

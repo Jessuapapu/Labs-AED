@@ -55,24 +55,51 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Clinica.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Iglesia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Agenda.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Clinica.xaml.cs">
+      <DependentUpon>Clinica.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Iglesia.cs" />
+    <Compile Include="Iglesia.xaml.cs">
+      <DependentUpon>Iglesia.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Styles\Dictionary1.xaml">
+    <Page Include="Presentacion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="styles\dictionary1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="styles\imageStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Presentacion.xaml.cs">
+      <DependentUpon>Presentacion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -105,6 +132,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Iconos\sonido-de-timbre.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Iconos\dientes-abiertos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Iconos\minimizar-ventana.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Iconos\usuario-del-portapapeles.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Iconos\caht.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Iconos\pageHeaderTitleImage_es_ES.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Iconos\eb9fa5ed-38f9-4b32-8b68-7b3ad3c6d1da.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

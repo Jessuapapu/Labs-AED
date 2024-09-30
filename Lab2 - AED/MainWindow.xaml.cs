@@ -24,5 +24,46 @@ namespace Lab2___AED
         {
             InitializeComponent();
         }
+
+        //metodo para mover la pestaña
+        private void BarraSuperior_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == System.Windows.Input.MouseButton.Left)
+            {
+                this.DragMove(); // Permite mover la ventana desde la barra superior
+            }
+        }
+
+        // metodos para cerrar, minimizar y maximizar la ventana
+        private void btnCerrar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMinimizar_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void BotonPresentacion_Click(object sender, RoutedEventArgs e)
+        {
+            Presentacion.Visibility = Visibility.Visible;
+            IglesiaUI.Visibility = Visibility.Collapsed;
+            ClinicaUI.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnIglesia_Click(object sender, RoutedEventArgs e)
+        {
+            IglesiaUI.Visibility = Visibility.Visible;
+            Presentacion.Visibility = Visibility.Collapsed;
+            ClinicaUI.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnClinica_Click(object sender, RoutedEventArgs e)
+        {
+            ClinicaUI.Visibility = Visibility.Visible;
+            Presentacion.Visibility = Visibility.Collapsed;
+            IglesiaUI.Visibility = Visibility.Collapsed;
+        }
     }
 }
