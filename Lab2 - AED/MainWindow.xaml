@@ -76,11 +76,11 @@
 
             <StackPanel>
 
-                <local:Iglesia x:Name="IglesiaUI" Visibility="Collapsed" Height="447" Width="644" Margin="0,10,0,5" />
+  
 
-                <local:Presentacion x:Name="Presentacion" Visibility="Collapsed" HorizontalAlignment="Center" Height="447" Width="644" Margin="0,10,0,5"/>
+                <local:Presentacion x:Name="Presentacion" Visibility="Visible" HorizontalAlignment="Center" Height="447" Width="644" Margin="0,10,0,5"/>
 
-                <local:Clinica x:Name="ClinicaUI" Visibility="Collapsed" Height="447" Width="644" Margin="0,10,0,5"/>
+                
                 
             </StackPanel>
 
