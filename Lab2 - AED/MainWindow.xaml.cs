@@ -48,22 +48,20 @@ namespace Lab2___AED
         private void BotonPresentacion_Click(object sender, RoutedEventArgs e)
         {
             Presentacion.Visibility = Visibility.Visible;
-            IglesiaUI.Visibility = Visibility.Collapsed;
-            ClinicaUI.Visibility = Visibility.Collapsed;
+
         }
 
         private void btnIglesia_Click(object sender, RoutedEventArgs e)
         {
-            IglesiaUI.Visibility = Visibility.Visible;
+           
             Presentacion.Visibility = Visibility.Collapsed;
-            ClinicaUI.Visibility = Visibility.Collapsed;
+
         }
 
         private void btnClinica_Click(object sender, RoutedEventArgs e)
         {
-            ClinicaUI.Visibility = Visibility.Visible;
             Presentacion.Visibility = Visibility.Collapsed;
-            IglesiaUI.Visibility = Visibility.Collapsed;
+
         }
     }
 }

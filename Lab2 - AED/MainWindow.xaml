@@ -32,11 +32,6 @@
     </Window.Resources>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="74*"/>
-            <RowDefinition Height="169*"/>
-            <RowDefinition Height="257*"/>
-        </Grid.RowDefinitions>
 
         <!-- borde del Nav bar-->
         <Border Style="{StaticResource PanelesAplicacion}" Background='{StaticResource BackgroundGeneral}' CornerRadius="0,0,0,10" Margin="-3,33,643,-3" Grid.RowSpan="3">
@@ -76,12 +71,15 @@
 
             <StackPanel>
 
-  
 
-                <local:Presentacion x:Name="Presentacion" Visibility="Visible" HorizontalAlignment="Center" Height="447" Width="644" Margin="0,10,0,5"/>
 
-                
-                
+                <local:Reproductor x:Name="Reproductor" Visibility="Visible" Height="483" Width="800" Margin="0,10,0,5"/>
+
+
+
+                <local:Presentacion x:Name="Presentacion" Visibility="Hidden" HorizontalAlignment="Center" Height="450" Width="800" Margin="0,10,0,5"/>
+
+
             </StackPanel>
 
         </Border>

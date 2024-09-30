@@ -21,17 +21,17 @@
     <Grid>
 
 
-        <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundUsercontrol}" HorizontalAlignment="Center" Height="450" VerticalAlignment="Center" Width="644" Panel.ZIndex="1">
+        <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundHeader}" HorizontalAlignment="Center" Height="450" VerticalAlignment="Center" Width="644" Panel.ZIndex="1">
 
             <Grid>
-                <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundHeader}" HorizontalAlignment="Center" Height="430" VerticalAlignment="Center" Width="624" Panel.ZIndex="-1"/>
+               
                 <StackPanel HorizontalAlignment="Center" Height="430" VerticalAlignment="Center" Width="624" >
 
                     <TextBlock Text="Presentacion" Style="{StaticResource textosPresentacion}" Margin="0,0,0,20"/>
                     <TextBlock Text="Algoritmizacio y Estructura de Datos" Style="{StaticResource textosPresentacion}" FontSize="20" Width="587"/>
                     <TextBlock Text="Laboratorio Numero 3" Style="{StaticResource textosPresentacion}" FontSize="20" Width="588"/>
                     <TextBlock Text="Jessua Solis / 2023-0851U / 2M1-CO" Style="{StaticResource textosPresentacion}" FontSize="20" Width="587"/>
-                    <Image Source="Iconos/pageHeaderTitleImage_es_ES.png" Height="246" Width="464" />
+                    <Image Source="Iconos/pageHeaderTitleImage_es_ES.png" Height="246" Width="620" />
 
 
 

@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="Lab2___AED.Reproductor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lab2___AED"
+             mc:Ignorable="d" 
+             d:DesignHeight="447" d:DesignWidth="644">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Dictionary1.xaml"/>
+                <ResourceDictionary Source="Styles/Imagestyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundUsercontrol}">
+            <Grid>
+
+                <TextBlock Text="Reproductor" FontSize="20" HorizontalAlignment="Left" Margin="490,10,0,396"/>
+                <MediaElement x:Name="mediaElement" LoadedBehavior="Manual" UnloadedBehavior="Stop" Margin="496,309,9,3"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="6,379,0,5" Width="398">
+                    <Button Content="Play" Click="Play_Click"/>
+                    <Button Content="Pause" Click="Pause_Click_1"/>
+                    <Button Content="Stop" Click="Stop_Click_2"/>
+                    <Button Content="Skip" Click="Skip_Click"/>
+                </StackPanel>
+
+
+                <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundSecundario}" Margin="10,29,239,273"/>
+                <StackPanel Margin="21,38,256,282" Orientation="Vertical">
+
+                    <StackPanel Height="30" Orientation="Horizontal">
+                        <TextBlock Text="Nombre de la cancion" FontSize="15"/>
+                        <TextBox x:Name="txtNombreCancion" Width="194"/>
+                    </StackPanel>
+
+                    <StackPanel Height="30" Orientation="Horizontal">
+                        <TextBlock Text="Duracion" FontSize="15" Width="176"/>
+                        <TextBox x:Name="txtDuracion" Width="193"/>
+                    </StackPanel>
+
+                    <StackPanel Height="30" Orientation="Horizontal">
+                        <TextBlock Text="Album" FontSize="15" Width="176"/>
+                        <TextBox x:Name="txtAlbum" Width="193"/>
+                    </StackPanel>
+
+                    <StackPanel Height="30" Orientation="Horizontal">
+                        <TextBlock Text="Autor" FontSize="15" Width="176"/>
+                        <TextBox x:Name="txtAutor" Width="193"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundSecundario}" Margin="10,175,239,69"></Border>
+                
+                <StackPanel Margin="10,181,244,74" Orientation="Horizontal">
+                
+                    <StackPanel Width="176" Margin="5,0,0,0">
+                        <TextBlock Text="Lista de Reproduccion" FontSize="15" Width="178" Margin="-2,0,0,0"/>
+                        <ListBox x:Name="lstCanciones" Height="160" Width="178" Style="{StaticResource ListasReproductor}"/>
+                    </StackPanel>
+
+                    <StackPanel Width="198" Margin="5,0,0,0">
+                        <TextBlock Text="Historial de Reproduccion" FontSize="15" Width="198" Margin="-7,0,0,0"/>
+                        <ListBox x:Name="lstHistorialReproducciomn" Height="161" Width="200" Style="{StaticResource ListasReproductor}"/>
+                    </StackPanel>
+                    
+                </StackPanel>
+
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
