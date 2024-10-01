@@ -21,43 +21,49 @@
             <Grid>
 
                 <TextBlock Text="Reproductor" FontSize="20" HorizontalAlignment="Left" Margin="490,10,0,396"/>
-                <MediaElement x:Name="mediaElement" LoadedBehavior="Manual" UnloadedBehavior="Stop" Margin="496,309,9,3"/>
+                <MediaElement x:Name="mediaElement" LoadedBehavior="Manual" UnloadedBehavior="Stop" Margin="296,160,212,161"  MediaEnded="MediaElement_MediaEnded" MediaOpened="MediaElement_MediaOpened"/>
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="6,379,0,5" Width="398">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="6,384,0,0" Width="398">
                     <Button Content="Play" Click="Play_Click"/>
                     <Button Content="Pause" Click="Pause_Click_1"/>
-                    <Button Content="Stop" Click="Stop_Click_2"/>
-                    <Button Content="Skip" Click="Skip_Click"/>
+                    <Button Content="Anterior" Click="Anterior_Click"/>
+                    <Button Content="Siguiente " Click="Skip_Click"/>
                 </StackPanel>
 
 
-                <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundSecundario}" Margin="10,29,239,273"/>
-                <StackPanel Margin="21,38,256,282" Orientation="Vertical">
+                <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundSecundario}" Margin="10,34,234,250"/>
+                <StackPanel Margin="15,41,238,251" Orientation="Vertical">
 
                     <StackPanel Height="30" Orientation="Horizontal">
                         <TextBlock Text="Nombre de la cancion" FontSize="15"/>
-                        <TextBox x:Name="txtNombreCancion" Width="194"/>
-                    </StackPanel>
-
-                    <StackPanel Height="30" Orientation="Horizontal">
-                        <TextBlock Text="Duracion" FontSize="15" Width="176"/>
-                        <TextBox x:Name="txtDuracion" Width="193"/>
+                        <TextBox x:Name="txtNombreCancion" Width="206"/>
                     </StackPanel>
 
                     <StackPanel Height="30" Orientation="Horizontal">
                         <TextBlock Text="Album" FontSize="15" Width="176"/>
-                        <TextBox x:Name="txtAlbum" Width="193"/>
+                        <TextBox x:Name="txtAlbum" Width="206"/>
                     </StackPanel>
 
                     <StackPanel Height="30" Orientation="Horizontal">
                         <TextBlock Text="Autor" FontSize="15" Width="176"/>
-                        <TextBox x:Name="txtAutor" Width="193"/>
+                        <TextBox x:Name="txtAutor" Width="206"/>
+                    </StackPanel>
+
+                    <StackPanel Height="30" Orientation="Horizontal">
+                        <TextBlock Text="Path" FontSize="15" Width="176"  />
+                        <TextBox x:Name="txtPath" Width="127" Foreground="Black"/>
+                        <Button Height="32" Width="79" Content="Buscar" x:Name="BuscarArchivo" Click="BuscarArchivo_Click"/> 
+                    </StackPanel>
+                    
+                    <StackPanel Height="30" Orientation="Horizontal">
+                        <TextBlock Text="Agregar Cancion" FontSize="15" Width="176"/>
+                        <Button Height="30" Width="206" Content="Agregar" Click="AgregarFilaReprocuccion" Cursor="Hand"/>
                     </StackPanel>
                 </StackPanel>
 
-                <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundSecundario}" Margin="10,175,239,69"></Border>
+                <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundSecundario}" Margin="10,196,238,54"></Border>
                 
-                <StackPanel Margin="10,181,244,74" Orientation="Horizontal">
+                <StackPanel Margin="10,198,244,57" Orientation="Horizontal">
                 
                     <StackPanel Width="176" Margin="5,0,0,0">
                         <TextBlock Text="Lista de Reproduccion" FontSize="15" Width="178" Margin="-2,0,0,0"/>
@@ -66,7 +72,8 @@
 
                     <StackPanel Width="198" Margin="5,0,0,0">
                         <TextBlock Text="Historial de Reproduccion" FontSize="15" Width="198" Margin="-7,0,0,0"/>
-                        <ListBox x:Name="lstHistorialReproducciomn" Height="161" Width="200" Style="{StaticResource ListasReproductor}"/>
+                        <ListBox x:Name="lstHistorial" Height="161" Width="200" Style="{StaticResource ListasReproductor}"/>
+
                     </StackPanel>
                     
                 </StackPanel>

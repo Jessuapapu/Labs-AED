@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Musicas.cs" />
     <Compile Include="Reproductor.xaml.cs">
       <DependentUpon>Reproductor.xaml</DependentUpon>
     </Compile>
