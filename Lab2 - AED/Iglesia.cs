@@ -50,15 +50,21 @@ namespace Lab2___AED
 
         public string toStringMes(int mesX, int mesY)
         {
-
-            string str = "Rango de Meses";
+            string str = "Rango de Meses:\n";
             string MesStr = "";
+
             for (int i = mesX; i <= mesY; i++)
             {
-                MesStr = Mes[i]; 
-               String.Concat(str, MesStr + ": " + MesMonto[i] + "\n");
+                MesStr = Mes[i];
+                str = String.Concat(str, MesStr + ": " + MesMonto[i] + "\n");
             }
+
             return str;
+        }
+
+        public string tostringNombre()
+        {
+            return Nombre;
         }
     }
 }

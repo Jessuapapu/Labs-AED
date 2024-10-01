@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Lab2___AED"
              mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
              d:DesignHeight="447" d:DesignWidth="644">
 
     <UserControl.Resources>
@@ -21,12 +22,12 @@
         <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundUsercontrol}">
 
             <Grid>
-                <StackPanel Margin="256,10,97,258">
-
-                    <ComboBox Width="117"/>
-                    <TextBox x:Name="txtId" Style="{StaticResource TextBoxIglesia}" Width="94"/>
-                    <Button Content="Agregar Mes" Style="{StaticResource BotonIglesia}" Click="btnCargar_Click" Margin="0,0,0,5" Width="98"/>
-
+                <StackPanel Margin="261,24,231,335">
+                    <StackPanel Orientation="Vertical" Width="147">
+                        <ComboBox Width="117" x:Name="MesIngresar"/>
+                        <TextBox x:Name="txtMesIngresar" Style="{StaticResource TextBoxIglesia}" Width="94"/>
+                        <Button Content="Agregar Mes" Style="{StaticResource BotonIglesia}" Click="btnAgregarMes" Margin="0,0,0,5" Width="98"/>
+                    </StackPanel>
                 </StackPanel>
 
                 <!-- stackPanel de los textBlocks -->
@@ -78,7 +79,7 @@
                     <StackPanel Orientation="Horizontal" Width="74" Margin="0,-16,0,0">
 
                         <TextBlock Text="Id -> " Width="36" Height="18" Margin="5,0,0,0" Foreground="{StaticResource BackgroundGeneral}" TextAlignment="Left"/>
-                        <TextBox x:Name="txtMes" Style="{StaticResource TextBoxIglesia}" Width="37"/>
+                        <TextBox x:Name="txtId" Style="{StaticResource TextBoxIglesia}" Width="37"/>
                     </StackPanel>
                     <Button x:Name="btnEliminar" Content="Eliminar" Style="{StaticResource BotonIglesia}" Click="btnEliminar_Click"/>
                     <Button x:Name="btnModificar" Content="Modificar" Style="{StaticResource BotonIglesia}" Click="btnModificar_Click"/>
@@ -87,49 +88,19 @@
 
                 </StackPanel>
 
-                <StackPanel Margin="548,10,10,265">
+                <StackPanel Margin="475,10,10,265">
 
-                    <StackPanel Height="20" Orientation="Horizontal" Width="257">
-                        <TextBlock Text="Enero"/>
-                        <TextBlock Text="Febrero"/>
-                        <TextBlock Text="Marzo"/>
-                        <TextBlock Text="Abril" Margin="6,0,0,0"/>
-                    </StackPanel>
 
-                    <StackPanel Height="45" Orientation="Horizontal" Width="276" Margin="0,-12,0,0">
-                        <TextBox Style="{StaticResource MesesIglesia}" x:Name="txtEnero"/>
-                        <TextBox Style="{StaticResource MesesIglesia}" x:Name="txtFebrero"/>
-                        <TextBox Style="{StaticResource MesesIglesia}" x:Name="txtMarzo"/>
-                        <TextBox Style="{StaticResource MesesIglesia}" x:Name="txtAbril"/>
+                    <TextBlock Text="Inicio" Margin="0,0,0,5"/>
+                    <ComboBox x:Name="cbIncio" Width="117" Margin="0,0,0,5"/>
+                    <TextBlock Text="Final" Margin="0,0,0,5"/>
+                    <ComboBox x:Name="cbFinal" Width="117" Margin="0,0,0,5"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Id" Margin="0,0,0,5"/>
+                        <TextBox x:Name="txtRangoId" Style="{StaticResource TextBoxIglesia}" Width="64" Margin="0,0,2,1"/>
                     </StackPanel>
+                    <Button Content="Mostrar" Style="{StaticResource BotonIglesia}" Click="btnMostrarRango" Width="98"/>
 
-                    <StackPanel Height="20" Orientation="Horizontal" Width="255" Margin="0,-10,0,0">
-                        <TextBlock Text="Mayo" Width="46" Margin="0,0,5,0"/>
-                        <TextBlock Text="Junio" Margin="6,0,0,0"/>
-                        <TextBlock Text="Julio" Margin="6,0,0,0"/>
-                        <TextBlock Text="Agosto" Margin="6,0,0,0"/>
-                    </StackPanel>
-
-                    <StackPanel Height="45" Orientation="Horizontal" Margin="0,-12,0,0">
-                        <TextBox Style="{StaticResource MesesIglesia}" x:Name="txtMayo"/>
-                        <TextBox Style="{StaticResource MesesIglesia}" x:Name="txtJunio"/>
-                        <TextBox Style="{StaticResource MesesIglesia}" x:Name="txtJulio"/>
-                        <TextBox Style="{StaticResource MesesIglesia}" x:Name="txtAgosto"/>
-                    </StackPanel>
-
-                    <StackPanel Height="20" Orientation="Horizontal" Width="287" Margin="0,-6,0,0">
-                        <TextBlock Text="Septi" Width="39" Margin="10,0,5,0"/>
-                        <TextBlock Text="Octubre" Margin="6,0,0,0" Width="55"/>
-                        <TextBlock Text="Nov" Margin="10,0,0,0" Width="62"/>
-                        <TextBlock Text="Dic" Margin="2,0,0,0"/>
-                    </StackPanel>
-
-                    <StackPanel Height="45" Orientation="Horizontal" Margin="0,-12,0,0">
-                        <TextBox Style="{StaticResource MesesIglesia}" x:Name="txtSept"/>
-                        <TextBox Style="{StaticResource MesesIglesia}" x:Name="txtOct"/>
-                        <TextBox Style="{StaticResource MesesIglesia}" x:Name="txtNov"/>
-                        <TextBox Style="{StaticResource MesesIglesia}" x:Name="txtDic"/>
-                    </StackPanel>
                 </StackPanel>
 
                 <!-- DataGrid -->

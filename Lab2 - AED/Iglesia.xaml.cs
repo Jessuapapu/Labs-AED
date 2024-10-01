@@ -25,10 +25,20 @@ namespace Lab2___AED
         Feligreses[] feligreses;
         int Tam, n = 0;
         bool Establecido = false;
-
+        int[] meses = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        List<string> Meses = new List<string> { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
         public Iglesia()
         {
             InitializeComponent();
+        }
+
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            MesIngresar.ItemsSource = Meses;
+            cbIncio.ItemsSource = Meses;
+            cbFinal.ItemsSource = Meses;
+
         }
 
         private void btnLimpiar_Click(object sender, RoutedEventArgs e)
@@ -55,9 +65,9 @@ namespace Lab2___AED
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
-            try 
+            try
             {
-                Modificar(int.Parse(txtId.Text), txtNombre.Text, txtDireccion.Text, txtTelefono.Text, arregloMeses());
+                Modificar(int.Parse(txtId.Text), txtNombre.Text, txtDireccion.Text, txtTelefono.Text, meses);
             }
             catch (Exception)
             {
@@ -66,7 +76,9 @@ namespace Lab2___AED
         }
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
-            AgregarFeligreses(txtNombre.Text,txtDireccion.Text,txtTelefono.Text,arregloMeses());
+            AgregarFeligreses(txtNombre.Text, txtDireccion.Text, txtTelefono.Text, meses);
+            meses = limpiarArreglo();
+
         }
 
         private void btnEstablecer_Click(object sender, RoutedEventArgs e)
@@ -80,7 +92,7 @@ namespace Lab2___AED
             {
                 Imprimir(OrdenarAporte(feligreses));
             }
-            
+
         }
         private void btnBuscar_Click(object sender, RoutedEventArgs e)
         {
@@ -97,25 +109,35 @@ namespace Lab2___AED
 
         private void btnListar_Click(object sender, RoutedEventArgs e)
         {
-            try 
+            try
             {
                 Listar(int.Parse(txtId.Text));
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("Ingrese un número válido");
             }
         }
 
-
+        private void btnMostrarRango(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MessageBox.Show($" Feligrese: {feligreses[int.Parse(txtRangoId.Text)].tostringNombre()} \n {feligreses[int.Parse(txtRangoId.Text)].toStringMes(cbIncio.SelectedIndex, cbFinal.SelectedIndex)}");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ingrese un número válido");
+            }
+        }
 
         // -------------------------------------------------- Algoritmos de los botones
         public void AgregarFeligreses(string nombre, string direccion, string telefono, int[] mesmonto)
         {
-            if (Establecido == false) {MessageBox.Show("No has establecido"); return;}
+            if (Establecido == false) { MessageBox.Show("No has establecido"); return; }
             try
             {
-                feligreses[n] = new Feligreses(n,nombre, direccion, telefono, mesmonto);
+                feligreses[n] = new Feligreses(n, nombre, direccion, telefono, mesmonto);
             }
             catch
             {
@@ -145,7 +167,7 @@ namespace Lab2___AED
 
             for (int i = 0; i < feligreses.Length; i++)
             {
-                feligreses[i] = new Feligreses(n,"", "", "", inicializar);
+                feligreses[i] = new Feligreses(n, "", "", "", inicializar);
             }
             Establecido = true;
             MessageBox.Show("Tamaño establecido");
@@ -172,7 +194,7 @@ namespace Lab2___AED
             dgImprimr.Columns.Add(new DataGridTextColumn { Header = "Teléfono", Binding = new Binding("Telefono") });
             dgImprimr.Columns.Add(new DataGridTextColumn { Header = "Monto Total", Binding = new Binding("MontoTotal") });
 
-           
+
             dgImprimr.ItemsSource = Feligreses;
         }
 
@@ -218,25 +240,13 @@ namespace Lab2___AED
             txtNombre.Text = "";
             txtDireccion.Text = "";
             txtTelefono.Text = "";
-            txtEnero.Text = "0";
-            txtFebrero.Text = "0";
-            txtMarzo.Text = "0";
-            txtAbril.Text = "0";
-            txtMayo.Text = "0";
-            txtJunio.Text = "0";
-            txtJulio.Text = "0";
-            txtAgosto.Text = "0";
-            txtSept.Text = "0";
-            txtOct.Text = "0";
-            txtNov.Text = "0";
-            txtDic.Text = "0";
         }
 
         public Feligreses[] OrdenarId(Feligreses[] feligreses1)
         {
             if (Establecido == false) return feligreses1;
             //Ordenar por Id
-            for (int i = 0; i < n-1; i++)
+            for (int i = 0; i < n - 1; i++)
             {
                 if (feligreses1[i].Id < feligreses1[i + 1].Id)
                 {
@@ -252,53 +262,57 @@ namespace Lab2___AED
         {
             if (Establecido == false) return feligreses1;
             //Ordenar por monto total
-            for (int i = 0; i < n-1; i++)
+            for (int i = 0; i < n - 1; i++)
             {
-                if(feligreses1[i].MontoTotal < feligreses1[i + 1].MontoTotal)
+                if (feligreses1[i].MontoTotal < feligreses1[i + 1].MontoTotal)
                 {
                     Feligreses aux = feligreses1[i];
                     feligreses1[i] = feligreses1[i + 1];
                     feligreses1[i + 1] = aux;
                 }
             }
-            
+
             return feligreses1;
         }
-        
-        public void Listar(int Id) 
-        { 
-            for(int i = 0; i < n; i++)
+
+        public void Listar(int Id)
+        {
+            for (int i = 0; i < n; i++)
             {
                 if (feligreses[i].Id == Id)
                 {
-                    MessageBox.Show($"{feligreses[i].toString()} \nMeses Aportados \n {feligreses[i].toStringMeses()}" );
+                    MessageBox.Show($"{feligreses[i].toString()} \nMeses Aportados \n {feligreses[i].toStringMeses()}");
                 }
             }
+        }
+
+        private void btnAgregarMes(object sender, RoutedEventArgs e)
+        {
+            if (Establecido == false) { MessageBox.Show("No has establecido"); return; }
+            try
+            {
+                meses[MesIngresar.SelectedIndex] = int.Parse(txtMesIngresar.Text);               
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ingrese un número válido");
+                return;
+            }
+
+            MessageBox.Show($"Mes {Meses[MesIngresar.SelectedIndex]} ingresado");
         }
 
         public void Buscar(int Id)
         {
             if (Establecido == false) { MessageBox.Show("No has establecido"); return; }
 
-            for (int i = 0; i < n;i++) 
+            for (int i = 0; i < n; i++)
             {
                 if (feligreses[i].Id == Id)
                 {
                     txtNombre.Text = feligreses[i].Nombre;
                     txtDireccion.Text = feligreses[i].Direccion;
                     txtTelefono.Text = feligreses[i].Telefono;
-                    txtEnero.Text = feligreses[i].MesMonto[0].ToString();
-                    txtFebrero.Text = feligreses[i].MesMonto[1].ToString();
-                    txtMarzo.Text = feligreses[i].MesMonto[2].ToString();
-                    txtAbril.Text = feligreses[i].MesMonto[3].ToString();
-                    txtMayo.Text = feligreses[i].MesMonto[4].ToString();
-                    txtJunio.Text = feligreses[i].MesMonto[5].ToString();
-                    txtJulio.Text = feligreses[i].MesMonto[6].ToString();
-                    txtAgosto.Text = feligreses[i].MesMonto[7].ToString();
-                    txtSept.Text = feligreses[i].MesMonto[8].ToString();
-                    txtOct.Text = feligreses[i].MesMonto[9].ToString();
-                    txtNov.Text = feligreses[i].MesMonto[10].ToString();
-                    txtDic.Text = feligreses[i].MesMonto[11].ToString();
                     MessageBox.Show("ID encontrado");
                     return;
                 }
@@ -310,15 +324,10 @@ namespace Lab2___AED
 
 
 
-        int[] arregloMeses()
+        int[] limpiarArreglo()
         {
-            int[] meses = { int.Parse(txtEnero.Text), int.Parse(txtFebrero.Text), int.Parse(txtMarzo.Text), int.Parse(txtAbril.Text), int.Parse(txtMayo.Text),
-                            int.Parse(txtJunio.Text), int.Parse(txtJulio.Text), int.Parse(txtAgosto.Text), int.Parse(txtSept.Text) , int.Parse(txtNov.Text), 
-                            int.Parse(txtDic.Text)
-            };
-            
+            int[] meses = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
             return meses;
         }
     }
-        
 }
