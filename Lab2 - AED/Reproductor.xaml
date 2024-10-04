@@ -75,9 +75,29 @@
                         <ListBox x:Name="lstHistorial" Height="161" Width="200" Style="{StaticResource ListasReproductor}"/>
 
                     </StackPanel>
-                    
+                  
                 </StackPanel>
 
+                <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundHeader}" Margin="406,52,0,275"></Border>
+                <StackPanel Margin="406,52,0,275" Orientation="Horizontal">
+
+                    <StackPanel Orientation="Vertical" Width="79" Height="113">
+                        <TextBlock Text="Titulo" FontSize="15"/>
+                        <TextBlock Text="Album" FontSize="15"/>
+                        <TextBlock Text="Autor" FontSize="15"/>
+                        <TextBlock Text="Duracion" FontSize="15"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Width="153" Height="111">
+                        <TextBlock Text="" FontSize="15" x:Name="lblTitulo" Width="154"/>
+                        <TextBlock Text="" FontSize="15" x:Name="lblAlbum"/>
+                        <TextBlock Text="" FontSize="15" x:Name="lblAutor"/>
+                        <TextBlock Text="" FontSize="15" x:Name="lblDuracion"/>
+                    </StackPanel>
+                    
+                </StackPanel>
+                
+                
             </Grid>
         </Border>
     </Grid>

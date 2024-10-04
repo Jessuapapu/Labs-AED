@@ -25,7 +25,6 @@ namespace Lab2___AED
 
         Stack<musicas> miReproduccion = new Stack<musicas>();
         Stack<musicas> Historial = new Stack<musicas>();
-        string Duracion;
         musicas cancion;
 
         public Reproductor()
@@ -35,7 +34,9 @@ namespace Lab2___AED
 
         private void Play_Click(object sender, RoutedEventArgs e)
         {
+            mediaElement.Source = new Uri(miReproduccion.Peek().path);
             mediaElement.Play();
+            MostrarInformacion(miReproduccion.Peek());
         }
 
         private void Pause_Click_1(object sender, RoutedEventArgs e)
@@ -45,9 +46,9 @@ namespace Lab2___AED
 
         private void Anterior_Click(object sender, RoutedEventArgs e)
         {
-            mediaElement.Stop();
+            mediaElement.Pause();
 
-            if(Historial.Count > 0)
+            if (Historial.Count > 0)
             {
                 miReproduccion.Push(Historial.Peek() as musicas);
                 Historial.Pop();
@@ -66,27 +67,49 @@ namespace Lab2___AED
         {
             mediaElement.Stop();
 
-            // validar si quedan canciones en la pila
-            if (miReproduccion.Count > 1)
+            if (miReproduccion.Count > 0)
             {
-                // guardar la cancion que se esta reproduciendo en el historial
-                Historial.Push(miReproduccion.Peek() as musicas);
+                try
+                {
+                    // Guardar la canción que se está reproduciendo en el historial
+                    Historial.Push(miReproduccion.Peek());
 
-                // quitar la cancion que se esta reproduciendo
-                miReproduccion.Pop();
+                    // Quitar la canción que se está reproduciendo
+                    miReproduccion.Pop();
 
-                // reproducir la siguiente cancion
-                musicas cancionAReproduccion = miReproduccion.Peek() as musicas;
-                MessageBox.Show("Reproduciendo: " + cancionAReproduccion.nombre);
-                mediaElement.Source = new Uri(cancionAReproduccion.path);
-                mediaElement.Play();
-                mostrarPila();
-                return;
+                    // Verificar si todavía hay canciones en la lista
+                    if (miReproduccion.Count > 0)
+                    {
+                        // Reproducir la siguiente canción
+                        musicas cancionAReproduccion = miReproduccion.Peek();
+                        MessageBox.Show("Reproduciendo: " + cancionAReproduccion.nombre);
+                        mediaElement.Source = new Uri(cancionAReproduccion.path);
+                        mediaElement.Play();
+                    }
+                    else
+                    {
+                        // Si no quedan más canciones, mostrar mensaje
+                        MessageBox.Show("No hay más canciones en la lista de reproducción.");
+                        mediaElement.Source = null; // Detener y limpiar el reproductor
+                    }
+
+                    // Mostrar el estado de la pila
+                    mostrarPila();
+                }
+                catch (InvalidOperationException)
+                {
+                    MessageBox.Show("Error al intentar reproducir la siguiente canción.");
+                }
             }
-
-           MessageBox.Show("No hay canciones en la lista de reproduccion");
+            else
+            {
+                MessageBox.Show("La lista de reproducción está vacía.");
+            }
         }
 
+
+
+        // ----------------- METODOS DE INTERFAZ ----------------- //
         private void BuscarArchivo_Click(object sender, RoutedEventArgs e)
         {
             buscarCancion();
@@ -94,7 +117,8 @@ namespace Lab2___AED
 
         private void AgregarFilaReprocuccion(object sender, RoutedEventArgs e)
         {
-            ObtenerParaPila();
+            apilarEnPila();
+            mostrarPila();
         }
 
 
@@ -120,38 +144,20 @@ namespace Lab2___AED
         }
 
 
-        public void ObtenerParaPila()
-        {
-            mediaElement.Source = new Uri(txtPath.Text);
-
-            mediaElement.MediaOpened -= MediaElement_MediaOpened;
-
-            mediaElement.MediaOpened += MediaElement_MediaOpened;
-
-            mediaElement.Play();
-            mediaElement.Pause();
-        }
-
         private void MediaElement_MediaOpened(object sender, RoutedEventArgs e)
         {
             if (mediaElement.NaturalDuration.HasTimeSpan)
             {
                 // Obtener la duración del archivo de audio
                 TimeSpan duracion = mediaElement.NaturalDuration.TimeSpan;
-                Duracion = duracion.ToString(@"hh\:mm\:ss");
-
-                apilarEnPila();
-
-
-                limpiar();
-                mostrarPila();
+                lblDuracion.Text = duracion.ToString(@"hh\:mm\:ss");
             }
         }
 
         public void apilarEnPila() 
         {
             // se obtienen los datos de la cancion para luego colocarlos en el objeto que sera enviado a la pila
-            cancion = new musicas(txtNombreCancion.Text, txtAutor.Text, txtAlbum.Text, txtPath.Text, Duracion);
+            cancion = new musicas(txtNombreCancion.Text, txtAutor.Text, txtAlbum.Text, txtPath.Text);
             miReproduccion.Push(cancion);
 
         }
@@ -164,6 +170,7 @@ namespace Lab2___AED
         public void mostrarPila()
         {
             lstCanciones.Items.Clear();
+            lstHistorial.Items.Clear();
 
             foreach (musicas cancion in miReproduccion.Reverse())
             {
@@ -186,5 +193,14 @@ namespace Lab2___AED
             txtPath.Text = "";
         }
 
+        public void MostrarInformacion(musicas cancion)
+        {
+            lblTitulo.Text = cancion.nombre;
+            lblAlbum.Text = cancion.album;
+            lblAutor.Text = cancion.artista;
+            mediaElement.MediaOpened += MediaElement_MediaOpened;
+            mediaElement.MediaOpened -= MediaElement_MediaOpened;
+
+        }
     }
 }
