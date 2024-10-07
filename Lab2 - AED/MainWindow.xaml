@@ -21,7 +21,6 @@
         >
 
     <Window.Resources>
-
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="styles/dictionary1.xaml"/>
@@ -47,17 +46,17 @@
                         </StackPanel>
                     </Button>
 
-                    <Button Width="135" Height="50" x:Name="btnIglesia" Click="btnIglesia_Click">
-                        <StackPanel Orientation="Horizontal" Width="81">
+                    <Button Width="135" Height="50" x:Name="btnIglesia" Click="btnReproductor_Click">
+                        <StackPanel Orientation="Horizontal" Width="116">
                             <Image Source="/Iconos/sonido-de-timbre.png" Style="{StaticResource StyleImageNavar}" Width="25" />
-                            <TextBlock Text="Iglesia" Foreground="{StaticResource ColorLetras}" VerticalAlignment="Center" Width="57" Margin="5,0,0,0"/>
+                            <TextBlock Text="Reproductor" Foreground="{StaticResource ColorLetras}" VerticalAlignment="Center" Width="84" Margin="5,0,0,0"/>
                         </StackPanel>
                     </Button>
 
-                    <Button Width="135" Height="50" Click="btnClinica_Click">
+                    <Button Width="135" Height="50" Click="btnBanco_Click">
                         <StackPanel Orientation="Horizontal" Width="115">
                             <Image Source="/Iconos/dientes-abiertos.png" Style="{StaticResource StyleImageNavar}" Width="27"/>
-                            <TextBlock Text="Odontologia" Foreground="{StaticResource ColorLetras}" VerticalAlignment="Center" Width="82" Margin="5,0,0,0"/>
+                            <TextBlock Text="Banco" Foreground="{StaticResource ColorLetras}" VerticalAlignment="Center" Width="50" Margin="5,0,0,0"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>
@@ -73,12 +72,14 @@
 
 
 
-                <local:Reproductor x:Name="Reproductor" Visibility="Visible" Height="448" Width="636" Margin="0,10,0,5"/>
+                <local:Reproductor x:Name="Reproductor" Visibility="Collapsed" Height="448" Width="636" Margin="0,10,0,5"/>
 
 
 
-                <local:Presentacion x:Name="Presentacion" Visibility="Hidden" HorizontalAlignment="Center" Height="450" Width="800" Margin="0,10,0,5"/>
+                <local:Presentacion x:Name="Presentacion" Visibility="Collapsed" HorizontalAlignment="Center" Height="450" Width="800" Margin="0,10,0,5"/>
 
+
+                <local:Banco x:Name="Banco" Visibility="Visible" HorizontalAlignment="Center" Height="450" Width="644" Margin="0,10,0,5"/>
 
             </StackPanel>
 

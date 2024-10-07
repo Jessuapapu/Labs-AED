@@ -96,8 +96,15 @@
                     </StackPanel>
                     
                 </StackPanel>
-                
-                
+
+                <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundHeader}" Margin="406,209,5,161"/>
+                <TextBlock Text="Canciones Agregadas" Margin="450,214,54,206"/>
+                <ComboBox Margin="414,238,12,173" x:Name="cbCanciones" SelectionChanged="cbCanciones_SelectionChanged"/>
+
+                <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundHeader}" Margin="406,311,5,94"/>
+                <TextBlock Text="Volumen" Margin="546,316,24,99"/>
+                <Slider x:Name="slider" Margin="414,319,94,0" Height="30" VerticalAlignment="Top" ValueChanged="slider_ValueChanged" Maximum="1" Value="100" Cursor="Hand" TickFrequency="0.05" IsSnapToTickEnabled="True" LargeChange="0.1"/>
+
             </Grid>
         </Border>
     </Grid>

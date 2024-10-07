@@ -153,7 +153,7 @@
     </Style>
     
     <!-- estilos para los textos general -->
-    <Style TargetType="TextBlock">
+    <Style TargetType="TextBlock" >
 
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontFamily" Value="Arial"/>
@@ -172,7 +172,7 @@
     
     <!-- Estilos para el TextBox -->
     <Style TargetType="TextBox">
-        <Setter Property="Foreground" Value="{StaticResource ColorLetras}"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontFamily" Value="Arial"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="FontWeight" Value="Bold"/>
@@ -277,10 +277,11 @@
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Padding" Value="10,5"/>
-        <Setter Property="Cursor" Value="Wait"/>
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Width" Value="100"/>
 
-
     </Style>
+
+   
 
 </ResourceDictionary>
