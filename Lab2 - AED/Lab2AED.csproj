@@ -59,6 +59,7 @@
       <DependentUpon>Banco.xaml</DependentUpon>
     </Compile>
     <Compile Include="Musicas.cs" />
+    <Compile Include="Personas.cs" />
     <Compile Include="Reproductor.xaml.cs">
       <DependentUpon>Reproductor.xaml</DependentUpon>
     </Compile>
