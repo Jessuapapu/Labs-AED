@@ -49,6 +49,7 @@ namespace Lab2___AED
         {
             Presentacion.Visibility = Visibility.Visible;
             Reproductor.Visibility = Visibility.Collapsed;
+            Banco.Visibility = Visibility.Collapsed;
         }
 
         private void btnReproductor_Click(object sender, RoutedEventArgs e)
@@ -56,12 +57,14 @@ namespace Lab2___AED
            
             Presentacion.Visibility = Visibility.Collapsed;
             Reproductor.Visibility = Visibility.Visible;
+            Banco.Visibility = Visibility.Collapsed;
         }
 
         private void btnBanco_Click(object sender, RoutedEventArgs e)
         {
             Presentacion.Visibility = Visibility.Collapsed;
-
+            Reproductor.Visibility= Visibility.Collapsed;
+            Banco.Visibility= Visibility.Visible;
         }
     }
 }

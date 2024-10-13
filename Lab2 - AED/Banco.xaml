@@ -22,7 +22,7 @@
             <Grid>
 
 
-                <Popup x:Name="popupTurnoC" Placement="Absolute" StaysOpen="True" IsOpen="True" Width="500" Height="500" AllowsTransparency="True" >
+                <Popup x:Name="popupTurnoC" Placement="Absolute" StaysOpen="True" IsOpen="False" Width="500" Height="500" AllowsTransparency="True" >
 
                     <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundSecundario}">
                         <Grid>
@@ -32,22 +32,22 @@
                             </StackPanel>
 
                             <StackPanel Width="500" Height="350" VerticalAlignment="Center">
-                                
+
                                 <StackPanel>
-                                    <TextBlock Text="Siguientes" Foreground="{StaticResource ColorLetras}" />
+                                    <TextBlock Text="Siguientes - Caja" Foreground="{StaticResource ColorLetras}" />
                                     <DataGrid x:Name="dgCaja" Width="495" Height="250"/>
                                 </StackPanel>
-
-                                <Button Content="Cerrar" Click="cerrarCola_Click"/>
                             </StackPanel>
                         </Grid>
                     </Border>
                 </Popup>
 
-                <Popup IsOpen="True" StaysOpen="True" x:Name="popupTurnoM" Placement="Absolute" Width="800" Height="200" AllowsTransparency="True"  >
+                <Popup IsOpen="False" StaysOpen="True" x:Name="popupTurnoM" Placement="Absolute" Width="800" Height="200" AllowsTransparency="True"  >
 
                     <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundSecundario}">
                         <Grid>
+                            
+                            
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Text="Actual: "/>
                                 <TextBlock Text="" x:Name="txtSiguienteAPasarM" FontSize="50"  Foreground="White"/>
@@ -56,11 +56,11 @@
                             <StackPanel Margin="200,0,0,0" Width="600" Height="200" Orientation="Horizontal" VerticalAlignment="Center">
 
                                 <StackPanel>
-                                    <TextBlock Text="Siguientes" Foreground="{StaticResource ColorLetras}" />
+                                    <TextBlock Text="Siguientes - Servicio Bancario" Foreground="{StaticResource ColorLetras}" />
                                     <DataGrid x:Name="dgMesa" Width="495" Height="250"/>
                                 </StackPanel>
 
-                                <Button Content="Cerrar" Click="cerrarMesa_Click"/>
+                                
                             </StackPanel>
                         </Grid>
                     </Border>
@@ -88,12 +88,14 @@
                     
                 </StackPanel>
                 
-                <Button Content="Mostrar Cola" Click="Mostrarcola" Margin="530,383,10,10"/>
-                <Button Content="Mostrar Mesa" Click="MostrarMesa" Margin="425,383,115,10"/>
                 <Button Content="Agregar" Click="Agregar_Click" Margin="242,14,298,379"/>
 
-                <Button Content="siguiente Caja" Click="SiguienteCaja_Click" Margin="530,14,10,379"/>
-                <Button Content="siguiente Mesa" Click="SiguienteMesa_Click" Margin="425,14,115,379"/>
+                <Button Content="siguiente Caja" Click="SiguienteCaja_Click" Margin="84,192,456,201"/>
+                <Button Content="siguiente SB" Click="SiguienteMesa_Click" Margin="374,192,166,201"/>
+                <Image Source="/Iconos/logo_bacredomatic.png" Margin="434,-33,0,254" />
+
+                <DataGrid Margin="10,252,381,20" x:Name="dgCajaAdmin"/>
+                <DataGrid Margin="293,252,85,20" x:Name="dgMesaAdmin"/>
             </Grid>
             
         </Border>

@@ -151,5 +151,14 @@
   <ItemGroup>
     <Resource Include="Iconos\eb9fa5ed-38f9-4b32-8b68-7b3ad3c6d1da.jpeg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Iconos\reproducir-pausar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Iconos\dolar-de-saco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Iconos\logo_bacredomatic.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
