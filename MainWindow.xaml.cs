@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Lab2___AED
+namespace Labs_AED
 {
     /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -24,6 +21,7 @@ namespace Lab2___AED
         {
             InitializeComponent();
         }
+
 
         //metodo para mover la pestaña
         private void BarraSuperior_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -47,23 +45,47 @@ namespace Lab2___AED
 
         private void BotonPresentacion_Click(object sender, RoutedEventArgs e)
         {
-            Presentacion.Visibility = Visibility.Visible;
-            IglesiaUI.Visibility = Visibility.Collapsed;
-            ClinicaUI.Visibility = Visibility.Collapsed;
+            OcultarVisibilidad(IglesiaUI);
+            OcultarVisibilidad(ClinicaUI);
+
+            MostrarControl(Presentacion);
         }
 
         private void btnIglesia_Click(object sender, RoutedEventArgs e)
         {
-            IglesiaUI.Visibility = Visibility.Visible;
-            Presentacion.Visibility = Visibility.Collapsed;
-            ClinicaUI.Visibility = Visibility.Collapsed;
+            OcultarVisibilidad(Presentacion);
+            OcultarVisibilidad(ClinicaUI);
+
+            MostrarControl(IglesiaUI);
         }
 
         private void btnClinica_Click(object sender, RoutedEventArgs e)
         {
-            ClinicaUI.Visibility = Visibility.Visible;
-            Presentacion.Visibility = Visibility.Collapsed;
-            IglesiaUI.Visibility = Visibility.Collapsed;
+            OcultarVisibilidad(Presentacion);
+            OcultarVisibilidad(IglesiaUI);
+
+            MostrarControl(ClinicaUI);
         }
+
+        private void OcultarVisibilidad(UserControl control)
+        {
+            if (control.Visibility == Visibility.Visible)
+            {
+                Storyboard desaparecer = (Storyboard)FindResource("DesaparecerStoryboard");
+                desaparecer.Begin(control);
+                control.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void MostrarControl(UserControl control)
+        {
+            if (control.Visibility != Visibility.Visible)
+            {
+                control.Visibility = Visibility.Visible;
+                Storyboard aparecer = (Storyboard)FindResource("AparecerStoryboard");
+                aparecer.Begin(control);
+            }
+        }
+
     }
 }

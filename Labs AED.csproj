@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>Labs_AED</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Iconos\caht.jpeg" />
+    <None Remove="Iconos\cerrar-sesion-alt.png" />
+    <None Remove="Iconos\descarga-de-carpetas.png" />
+    <None Remove="Iconos\dientes-abiertos.png" />
+    <None Remove="Iconos\eb9fa5ed-38f9-4b32-8b68-7b3ad3c6d1da.jpeg" />
+    <None Remove="Iconos\minimizar-ventana.png" />
+    <None Remove="Iconos\pageHeaderTitleImage_es_ES.png" />
+    <None Remove="Iconos\sonido-de-timbre.png" />
+    <None Remove="Iconos\usuario-del-portapapeles.png" />
+    <None Remove="Iconos\x.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Clinica\Clinica.csproj" />
+    <ProjectReference Include="..\Feligreses\Feligreses.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Iconos\caht.jpeg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Iconos\cerrar-sesion-alt.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Iconos\descarga-de-carpetas.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Iconos\dientes-abiertos.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Iconos\eb9fa5ed-38f9-4b32-8b68-7b3ad3c6d1da.jpeg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Iconos\minimizar-ventana.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Iconos\pageHeaderTitleImage_es_ES.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Iconos\sonido-de-timbre.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Iconos\usuario-del-portapapeles.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Iconos\x.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>

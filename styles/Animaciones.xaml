@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <!-- Storyboard para aparecer -->
+    <Storyboard x:Key="AparecerStoryboard">
+        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.5" />
+    </Storyboard>
+
+    <!-- Storyboard para desaparecer -->
+    <Storyboard x:Key="DesaparecerStoryboard">
+        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:0.5" />
+    </Storyboard>
+
+</ResourceDictionary>

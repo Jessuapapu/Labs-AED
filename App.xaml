@@ -1,7 +1,7 @@
-﻿<Application x:Class="Lab2___AED.App"
+﻿<Application x:Class="Labs_AED.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Lab2___AED"
+             xmlns:local="clr-namespace:Labs_AED"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

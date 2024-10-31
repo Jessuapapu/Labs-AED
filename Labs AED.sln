@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Labs AED", "Labs AED.csproj", "{F64D9C9E-08E1-4314-8E7F-E722D0A6D430}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Feligreses", "..\Feligreses\Feligreses.csproj", "{2FBB22BB-B50D-4157-9D7B-D2BA7F39F5BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinica", "..\Clinica\Clinica.csproj", "{A86D7156-AA9B-4E31-8E5B-EED1C2F08E8D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F64D9C9E-08E1-4314-8E7F-E722D0A6D430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F64D9C9E-08E1-4314-8E7F-E722D0A6D430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F64D9C9E-08E1-4314-8E7F-E722D0A6D430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F64D9C9E-08E1-4314-8E7F-E722D0A6D430}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FBB22BB-B50D-4157-9D7B-D2BA7F39F5BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FBB22BB-B50D-4157-9D7B-D2BA7F39F5BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FBB22BB-B50D-4157-9D7B-D2BA7F39F5BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FBB22BB-B50D-4157-9D7B-D2BA7F39F5BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A86D7156-AA9B-4E31-8E5B-EED1C2F08E8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A86D7156-AA9B-4E31-8E5B-EED1C2F08E8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A86D7156-AA9B-4E31-8E5B-EED1C2F08E8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A86D7156-AA9B-4E31-8E5B-EED1C2F08E8D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4B90FEEE-D4ED-40B7-827B-74B94CE298AA}
+	EndGlobalSection
+EndGlobal

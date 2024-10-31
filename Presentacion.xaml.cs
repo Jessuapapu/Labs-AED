@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Lab2___AED
+namespace Labs_AED
 {
     /// <summary>
-    /// Lógica de interacción para si.xaml
+    /// Lógica de interacción para Presentacion.xaml
     /// </summary>
-    public partial class si : UserControl
+    public partial class Presentacion : UserControl
     {
-        public si()
+        public Presentacion()
         {
             InitializeComponent();
         }

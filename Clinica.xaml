@@ -1,11 +1,13 @@
-﻿<UserControl x:Class="Lab2___AED.Clinica"
+﻿<UserControl x:Class="Labs_AED.Clinica"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Lab2___AED"
+             xmlns:local="clr-namespace:Labs_AED"
              mc:Ignorable="d" 
-             d:DesignHeight="447" d:DesignWidth="644">
+             d:DesignHeight="447" d:DesignWidth="644"
+             Loaded="UserControl_Loaded"
+             >
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -16,41 +18,38 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
+
     <Grid>
+
         <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundUsercontrol}">
 
             <Grid>
 
-                <StackPanel HorizontalAlignment="Left" Height="131" Margin="18,28,0,0" VerticalAlignment="Top" Width="136">
+                <StackPanel HorizontalAlignment="Left" Height="98" Margin="18,28,0,0" VerticalAlignment="Top" Width="136">
 
                     <TextBlock Text="Nombre del Paciente"/>
+                    <TextBlock Text="Cedula"/>
                     <TextBlock Text="Servicio"/>
                     <TextBlock Text="Fecha"/>
-
-
-                    <TextBlock Text="" Height="27"/>
-                    <TextBlock Text="Establecer" Margin="0,2,0,0"/>
 
                 </StackPanel>
 
 
-                <StackPanel Margin="148,27,313,284">
+                <StackPanel Margin="148,27,313,286">
 
                     <TextBox x:Name="txtNombre" Style="{StaticResource TextBoxIglesia}" Width="124"/>
+                    <TextBox x:Name="txtCedula" Style="{StaticResource TextBoxIglesia}" Width="124"/>
                     <ComboBox x:Name="cbServicio" Width="123" Margin="0,0,0,1"/>
-                    
+
                     <StackPanel Orientation="Horizontal">
                         <ComboBox x:Name="cbdia" Width="54" />
                         <ComboBox x:Name="cbmes" Width="61" SelectionChanged="cbmes_SelectionChanged" />
                         <ComboBox x:Name="cbaño" Width="64" />
                     </StackPanel>
-                    
-                    <Button x:Name="btnAgregar" Content="Agendar" Style="{StaticResource BotonIglesia}" Click="btnAgregar_Click" Margin="0,0,0,5"/>
 
-                    <StackPanel Orientation="Horizontal" Width="123" Margin="0,-2,0,0">
-                        <TextBox x:Name="txtTam" Style="{StaticResource TextBoxIglesia}" Width="30" Margin="0,0,2,1"/>
-                        <Button x:Name="btnEstablecer" Content="Establecer" Style="{StaticResource BotonIglesia}" Click="btnEstablecer_Click" Width="90"/>
-                    </StackPanel>
+                    <Button x:Name="btnAgregar" Content="Agendar" Style="{StaticResource BotonIglesia}" Click="btnAgregar_Click" Margin="0,0,0,5"/>
+                    
+
 
                 </StackPanel>
 
@@ -66,7 +65,6 @@
 
 
                     <Button x:Name="btnLimpiar" Content="Limpiar" Style="{StaticResource BotonIglesia}" Click="btnLimpiar_Click"/>
-                    <Button x:Name="btnImprimir" Content="Imprimir" Style="{StaticResource BotonIglesia}" Click="btnImprimir_Click"/>
                     <TextBlock Text=""/>
 
                     <!-- Botones de buscar -->
@@ -87,17 +85,34 @@
                 <StackPanel Margin="360,20,33,284">
 
                     <StackPanel Height="37" Orientation="Horizontal">
-                        <Button x:Name="btnOrdenarServicio" Content="Ordenar Servicio" Style="{StaticResource BotonIglesia}" Click="btnOrdenarServicio_Click" Width="134"/>
-                        <ComboBox x:Name="cbServicioOrdenar" Width="103" Margin="0,0,0,1"/>
+                        <TextBlock Style="{StaticResource textosPresentacion}" Text="Filtrar por cita" FontSize="17" Width="128"/>
+                        <ComboBox x:Name="cbServicioOrdenar" Width="103" Margin="0,0,0,1" SelectionChanged="cbServicioOrdenar_SelectionChanged"/>
                     </StackPanel>
 
                     <StackPanel Height="37" Orientation="Horizontal">
-                        <Button x:Name="btnOrdenaMes" Content="Ordenar Mes" Style="{StaticResource BotonIglesia}" Click="btnOrdenarMes_Click" Width="134"/>
-                        <ComboBox x:Name="cbmesBuscar" Width="103" Margin="0,0,0,1"/>
+                        <TextBlock Style="{StaticResource textosPresentacion}" Text="Filtrar por mes" FontSize="17" Width="128"/>
+                        <ComboBox x:Name="cbmesBuscar" Width="103" Margin="0,0,0,1" SelectionChanged="cbmesBuscar_SelectionChanged"/>
                     </StackPanel>
-                    <Button x:Name="btnOrdenarfecha" Content="Listar Fechas" Style="{StaticResource BotonIglesia}" Click="btnOrdenarfecha_Click" Width="134"/>
+                    <Button x:Name="btnOrdenarfecha" Content="Ordenar Fechas" Style="{StaticResource BotonIglesia}" Click="btnOrdenarfecha_Click" Width="134"/>
+                    <Button x:Name="btnOrdenar" Content="Ordenar " Style="{StaticResource BotonIglesia}" Click="btnOrdenar_Click" Width="134"/>
+
+
+                    
+
+
                 </StackPanel>
             </Grid>
         </Border>
+
+
+        <Popup IsOpen="False" StaysOpen="True" x:Name="popupPacientes" Placement="Absolute" Width="500" Height="500" AllowsTransparency="True"  >
+
+            <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundSecundario}">
+                <Grid>
+                    <DataGrid x:Name="dgPacientes" Style="{StaticResource DataGridGeneral}" Width="500" Height="500" AutoGenerateColumns="True"/>
+                </Grid>
+            </Border>
+
+        </Popup>
     </Grid>
 </UserControl>
