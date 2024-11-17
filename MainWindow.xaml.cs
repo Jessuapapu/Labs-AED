@@ -17,9 +17,24 @@ namespace Labs_AED
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private MonografiasAdmin monografiasAdmin;
+        private MonografiasAdminAgr monografiasAdminAgr;
+
         public MainWindow()
         {
             InitializeComponent();
+
+            monografiasAdmin = new MonografiasAdmin();
+            monografiasAdminAgr = new MonografiasAdminAgr();
+
+            // Agregar los controles al StackPanel
+            miStackPanel.Children.Add(monografiasAdmin);
+            miStackPanel.Children.Add(monografiasAdminAgr);
+
+            // Suscribir el evento
+            monografiasAdminAgr.ActuProfesores += monografiasAdmin.RecibirProfesores;
+
         }
 
 
@@ -45,26 +60,20 @@ namespace Labs_AED
 
         private void BotonPresentacion_Click(object sender, RoutedEventArgs e)
         {
-            OcultarVisibilidad(IglesiaUI);
-            OcultarVisibilidad(ClinicaUI);
-
-            MostrarControl(Presentacion);
+            
         }
 
         private void btnIglesia_Click(object sender, RoutedEventArgs e)
         {
-            OcultarVisibilidad(Presentacion);
-            OcultarVisibilidad(ClinicaUI);
+            MostrarControl(MonografiasAdminAgr);
+            OcultarVisibilidad(MonografiasAdmin);
 
-            MostrarControl(IglesiaUI);
         }
 
         private void btnClinica_Click(object sender, RoutedEventArgs e)
         {
-            OcultarVisibilidad(Presentacion);
-            OcultarVisibilidad(IglesiaUI);
-
-            MostrarControl(ClinicaUI);
+            MostrarControl(MonografiasAdmin);
+            OcultarVisibilidad(MonografiasAdminAgr);
         }
 
         private void OcultarVisibilidad(UserControl control)
@@ -80,12 +89,11 @@ namespace Labs_AED
         private void MostrarControl(UserControl control)
         {
             if (control.Visibility != Visibility.Visible)
-            {
-                control.Visibility = Visibility.Visible;
+            {   
                 Storyboard aparecer = (Storyboard)FindResource("AparecerStoryboard");
                 aparecer.Begin(control);
+                control.Visibility = Visibility.Visible;
             }
         }
-
     }
 }

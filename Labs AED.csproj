@@ -10,6 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Monografia\**" />
+    <EmbeddedResource Remove="Monografia\**" />
+    <None Remove="Monografia\**" />
+    <Page Remove="Monografia\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Iconos\caht.jpeg" />
     <None Remove="Iconos\cerrar-sesion-alt.png" />
     <None Remove="Iconos\descarga-de-carpetas.png" />
@@ -25,6 +32,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Clinica\Clinica.csproj" />
     <ProjectReference Include="..\Feligreses\Feligreses.csproj" />
+    <ProjectReference Include="Monografia\Monografia.csproj" />
   </ItemGroup>
 
   <ItemGroup>

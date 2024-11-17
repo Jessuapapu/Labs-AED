@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="Labs_AED.MonoRelaciones"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Labs_AED"
+             mc:Ignorable="d" 
+             d:DesignHeight="570" d:DesignWidth="836">
+    <Grid>
+        <Calendar DataContextChanged="Calendar_DataContextChanged" HorizontalAlignment="Left" Height="221" Margin="112,119,0,0" VerticalAlignment="Top" Width="408"/>
+
+    </Grid>
+</UserControl>

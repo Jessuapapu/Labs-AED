@@ -5,13 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Labs_AED"
         mc:Ignorable="d"
-        Title="MainWindow" 
-        Height="500"
-        MaxHeight="500"
-        MinHeight="450"
-        Width="800"
-        MaxWidth="800"
-        MinWidth="800"
+        Title="Labs AED"
+        
+        Height="600"
+        
+        MaxHeight="600"
+        MinHeight="600"
+        
+        Width="1000"
+        
+        MaxWidth="1000"
+        MinWidth="1000"
+        
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
@@ -22,9 +27,11 @@
 
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                
                 <ResourceDictionary Source="styles/dictionary1.xaml"/>
                 <ResourceDictionary Source="styles/imageStyles.xaml"/>
                 <ResourceDictionary Source="Styles/Animaciones.xaml"/>
+            
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
@@ -32,18 +39,13 @@
 
     <Grid>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="74*"/>
-            <RowDefinition Height="169*"/>
-            <RowDefinition Height="257*"/>
-        </Grid.RowDefinitions>
+ 
 
         <!-- borde del Nav bar-->
-        <Border Style="{StaticResource PanelesAplicacion}" Background='{StaticResource BackgroundGeneral}' CornerRadius="0,0,0,10" Margin="-3,33,643,-3" Grid.RowSpan="3">
+        <Border Style="{StaticResource PanelesAplicacion}" Background='{StaticResource BackgroundGeneral}' CornerRadius="0,0,0,10" Margin="-3,33,841,-3" Grid.RowSpan="3">
 
-            <StackPanel HorizontalAlignment="Center" Height="450" VerticalAlignment="Center" Width="222">
-
-                <StackPanel Margin="0,0,0,20">
+            <StackPanel HorizontalAlignment="Center" Height="450" VerticalAlignment="Top" Width="190" Margin="0,-2,0,0">
+                <StackPanel Width="162">
 
                     <Button Width="135" Height="50" x:Name="BotonPresentacion" Click="BotonPresentacion_Click">
                         <StackPanel Orientation="Horizontal">
@@ -53,45 +55,49 @@
                     </Button>
 
                     <Button Width="135" Height="50" x:Name="btnIglesia" Click="btnIglesia_Click">
-                        <StackPanel Orientation="Horizontal" Width="81">
-                            <Image Source="/Iconos/sonido-de-timbre.png" Style="{StaticResource StyleImageNavar}" Width="25" />
-                            <TextBlock Text="Iglesia" Foreground="{StaticResource ColorLetras}" VerticalAlignment="Center" Width="57" Margin="5,0,0,0"/>
+                        <StackPanel Orientation="Horizontal" Width="128">
+                            <TextBlock Text="Administrar Mono" Foreground="{StaticResource ColorLetras}" VerticalAlignment="Center" Width="123" Margin="5,0,0,0"/>
                         </StackPanel>
                     </Button>
 
-                    <Button Width="135" Height="50" Click="btnClinica_Click">
-                        <StackPanel Orientation="Horizontal" Width="115">
-                            <Image Source="/Iconos/dientes-abiertos.png" Style="{StaticResource StyleImageNavar}" Width="27" Margin="0,0,5,0" Height="30"/>
-                            <TextBlock Text="Odontologia" Foreground="{StaticResource ColorLetras}" VerticalAlignment="Center" Width="82" Margin="5,0,0,0"/>
+                    <Button Width="136" Height="50" Click="btnClinica_Click">
+                        <StackPanel Orientation="Horizontal" Width="136">
+                            <TextBlock Text="Agregar Estu - Profe" Foreground="{StaticResource ColorLetras}" VerticalAlignment="Center" Width="131" Margin="5,0,0,0"/>
                         </StackPanel>
                     </Button>
+
+                    <Button Width="136" Height="50">
+                        <StackPanel Orientation="Horizontal" Width="136">
+                            <TextBlock Text="Mirar Monografia" Foreground="{StaticResource ColorLetras}" VerticalAlignment="Center" Width="132" Margin="5,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+
+
                 </StackPanel>
-
             </StackPanel>
 
         </Border>
 
         <!-- borde De visualizacion de UI -->
-        <Border Style="{StaticResource PanelesAplicacion}" Background='{StaticResource BackgroundSecundario}' CornerRadius="0,0,10,0" Margin="148,33,0,-3" Grid.RowSpan="3">
+        <Border Style="{StaticResource PanelesAplicacion}" Background='{StaticResource BackgroundSecundario}' CornerRadius="0,0,10,0" Margin="155,33,0,-3" Grid.RowSpan="3">
 
-            <StackPanel>
+            <StackPanel Margin="-2,8,0,0" x:Name="miStackPanel">
 
-                <local:Iglesia x:Name="IglesiaUI" Visibility="Collapsed" Height="447" Width="644" Margin="0,10,0,5" />
+                <local:MonografiasAdmin x:Name="MonografiasAdmin" Visibility="Collapsed" Height="552" Width="830"/>
+                <local:MonografiasAdminAgr x:Name="MonografiasAdminAgr" Visibility="Collapsed" Height="552" Width="830"/>
+                <local:MonoRelaciones x:Name="MonoRelaciones" Visibility="Visible" Height="552" Width="830"/>
 
-                <local:Presentacion x:Name="Presentacion" Visibility="Collapsed" HorizontalAlignment="Center" Height="447" Width="644" Margin="0,10,0,5"/>
-
-                <local:Clinica x:Name="ClinicaUI" Visibility="Collapsed" Height="447" Width="644" Margin="0,10,0,5"/>
-
+                
             </StackPanel>
 
         </Border>
 
         <!-- borde del header -->
-        <Border Style="{StaticResource Header}" HorizontalAlignment="Center" Height="36" VerticalAlignment="Top" Width="800" CornerRadius="10,10,0,0" MouseDown="BarraSuperior_MouseDown">
+        <Border Style="{StaticResource Header}" HorizontalAlignment="Center" Height="36" VerticalAlignment="Top" Width="1006" CornerRadius="10,10,0,0" MouseDown="BarraSuperior_MouseDown">
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="666,0,0,0" Width="129">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="871,0,0,0" Width="129" Height="32">
 
-                <Image Source="/Iconos/caht.jpeg" />
+                <Image Source="/Iconos/caht.jpeg" Height="27" />
 
                 <Button Width="51" Height="33" Style="{StaticResource BotonesHeader}" Click="btnMinimizar_Click" HorizontalAlignment="Right">
                     <StackPanel Orientation="Horizontal">
@@ -110,5 +116,6 @@
         </Border>
 
 
+        
     </Grid>
 </Window>

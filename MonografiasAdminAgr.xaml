@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="Labs_AED.MonografiasAdminAgr"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Labs_AED"
+             mc:Ignorable="d" 
+              d:DesignHeight="570" d:DesignWidth="836">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="styles/dictionary1.xaml"/>
+                <ResourceDictionary Source="styles/imageStyles.xaml"/>
+                <ResourceDictionary Source="Styles/Animaciones.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+
+        <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundUsercontrol}" HorizontalAlignment="Center" Height="570" VerticalAlignment="Center" Width="836"/>
+
+        <StackPanel Margin="22,10,539,356">
+
+            <StackPanel Orientation="Horizontal" Width="269">
+                <TextBlock Text="Ingrese el Nombre" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="140"/>
+                <TextBox x:Name="txtNombre" Width="127" Height="29"/>
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal" Width="269">
+                <TextBlock Text="Ingrese el apellido" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="139"/>
+                <TextBox x:Name="txtApellido" Width="128" Height="29"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Width="269">
+                <TextBlock Text="Ingrese el Carnet" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="138"/>
+                <TextBox x:Name="txtCarnet" Width="130" Height="29"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Height="36">
+                <TextBlock Text="Ingrese la direccion" FontSize="15" Style="{StaticResource textosPresentacion}" Height="34" Width="140"/>
+                <TextBox x:Name="txtDirrecion" Width="132" Height="28"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Height="36">
+                <TextBlock Text="Ingrese el telefono" FontSize="15" Style="{StaticResource textosPresentacion}" Height="34" Width="140"/>
+                <TextBox x:Name="txtTelefono" Width="134" Height="28"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Height="36">
+                <TextBlock Text="Ingrese el cumple" FontSize="15" Style="{StaticResource textosPresentacion}" Height="34" Width="140"/>
+                <DatePicker x:Name="dpFechaNac" Width="132" Height="28"/>
+            </StackPanel>
+
+        </StackPanel>
+
+
+        <StackPanel Margin="551,10,10,356">
+
+            <StackPanel Orientation="Horizontal" Width="269">
+                <TextBlock Text="Ingrese el Nombre" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="140"/>
+                <TextBox x:Name="txtNombrePR" Width="127" Height="29"/>
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal" Width="269">
+                <TextBlock Text="Ingrese el apellido" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="139"/>
+                <TextBox x:Name="txtApellidoPR" Width="128" Height="29"/>
+            </StackPanel>
+
+
+            <StackPanel Orientation="Horizontal" Height="36">
+                <TextBlock Text="Ingrese la direccion" FontSize="15" Style="{StaticResource textosPresentacion}" Height="34" Width="140"/>
+                <TextBox x:Name="txtDirrecionPR" Width="132" Height="28"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Height="36">
+                <TextBlock Text="Ingrese el telefono" FontSize="15" Style="{StaticResource textosPresentacion}" Height="34" Width="140"/>
+                <TextBox x:Name="txtTelefonoPR" Width="134" Height="28"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Height="36">
+                <TextBlock Text="Ingrese el cumple" FontSize="15" Style="{StaticResource textosPresentacion}" Height="34" Width="140"/>
+                <DatePicker x:Name="dpFechaNacPR" Width="132" Height="28"/>
+            </StackPanel>
+
+        </StackPanel>
+
+        <Button Height="41" Width="NaN" Content="Guardar Estudiante" Margin="302,10,415,519" Click="agregarEstudiante_Click"/>
+        <Button Height="41" Width="NaN" Content="Guardar Profesor" Margin="630,189,89,340" Click="agregarProfesor_Click"/>
+
+        <StackPanel Margin="495,249,0,10" HorizontalAlignment="Left" Width="331">
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Ingrese el Nombre por buscar" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="208"/>
+                <TextBox x:Name="txtNombreX" Width="155" Height="29" TextChanged="txtNombreX_TextChanged" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Height="54">
+                <TextBlock Text="Ingrese la fecha por buscar" FontSize="15" Style="{StaticResource textosPresentacion}" Height="34" Width="207"/>
+                <DatePicker x:Name="dpFechaX" Width="156" Height="42" SelectedDateChanged="dpFechaX_SelectedDateChanged" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Height="31">
+                <TextBlock Text="Ingrese el apellido por buscar" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="208"/>
+                <TextBox x:Name="txtApellidoX" Width="155" Height="29" TextChanged="txtApellidoX_TextChanged"/>
+            </StackPanel>
+
+            <DataGrid Height="192" x:Name="dgResult"></DataGrid>
+        </StackPanel>
+
+        <DataGrid Margin="7,269,590,10"></DataGrid>
+        <DataGrid Margin="251,269,346,10"></DataGrid>
+    </Grid>
+</UserControl>
