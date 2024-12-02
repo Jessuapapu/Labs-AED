@@ -4,10 +4,111 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Labs_AED"
-             mc:Ignorable="d" 
-             d:DesignHeight="570" d:DesignWidth="836">
-    <Grid>
-        <Calendar DataContextChanged="Calendar_DataContextChanged" HorizontalAlignment="Left" Height="221" Margin="112,119,0,0" VerticalAlignment="Top" Width="408"/>
+             mc:Ignorable="d" Height="619" Width="1127">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="styles/dictionary1.xaml"/>
+                <ResourceDictionary Source="styles/imageStyles.xaml"/>
+                <ResourceDictionary Source="Styles/Animaciones.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid HorizontalAlignment="Center" Width="1127">
+
+        <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundSecundario}">
+            <Grid>
+
+                <StackPanel Margin="56,53,767,421">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Ingrese la Monografia" Style="{StaticResource textosPresentacion}" FontSize="15"/>
+                        <ComboBox x:Name="cbmonografias" Width="134" Height="29" 
+                        IsEditable="True"
+                        StaysOpenOnEdit="True"
+                        TextBoxBase.TextChanged="cbmonografias_TextChanged"
+                        />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Ingrese al profesor" Style="{StaticResource textosPresentacion}" FontSize="15" Width="163"/>
+                        <ComboBox x:Name="cbprofesor" Width="134" Height="29" 
+                        IsEditable="True"
+                        StaysOpenOnEdit="True"
+                        TextBoxBase.TextChanged="cbprofesor_TextChanged"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Ingrese el rol" Style="{StaticResource textosPresentacion}" FontSize="15" Width="163"/>
+                        <ComboBox x:Name="cbRol" Width="134" Height="29" 
+                        IsEditable="True"
+                        StaysOpenOnEdit="True"
+                        TextBoxBase.TextChanged="cbRol_TextChanged"
+                        />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Width="271">
+                        <Button x:Name="guardarrelacion" Width="129" Click="guardarrelacion_Click">Guardar Relacion
+                        </Button>
+                        <Button x:Name="borrarrrelacion" Width="140" Click="borrarrrelacion_Click">Borrar Relacion
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+
+
+
+                <StackPanel Margin="437,91,386,417">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Ingrese la Monografia" Style="{StaticResource textosPresentacion}" FontSize="15"/>
+                        <ComboBox x:Name="cbMonografiaAlum" Width="134" Height="29" 
+        IsEditable="True"
+        StaysOpenOnEdit="True"
+        TextBoxBase.TextChanged="cbMonografiaAlum_TextChanged"
+        />
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Ingrese al Alumno" Style="{StaticResource textosPresentacion}" FontSize="15" Width="163"/>
+                        <ComboBox x:Name="cAlumnos" Width="134" Height="29" 
+        IsEditable="True"
+        StaysOpenOnEdit="True"
+        TextBoxBase.TextChanged="cAlumnos_TextChanged"/>
+
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="guardarrelacion2" Width="143" Click="guardarrelacion2_Click" Content="Guardar Relacion"/>
+                        <Button x:Name="borrarrrelacion2" Width="161" Click="borrarrrelacion2_Click" Content="borrar Relacion"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <DataGrid x:Name="dgProfesorMono" Margin="19,199,731,57" SelectionChanged="dgProfesorMono_SelectionChanged"/>
+                <DataGrid x:Name="dgAlumnoMono" Margin="397,199,346,57" SelectionChanged="dgAlumnoMono_SelectionChanged"/>
+
+                <TextBlock Style="{StaticResource textosPresentacion}" FontSize="20"  Text="Asignacion de Alumnos y Profesores a las Monografias" Margin="359,0,278,580"/>
+
+
+
+                <StackPanel Margin="782,254,0,113">
+                    <TextBlock Style="{StaticResource textosPresentacion}" FontSize="17" Width="129" >Buscar Relacion</TextBlock>
+                    
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Ingrese el nombre" Style="{StaticResource textosPresentacion}" FontSize="15" Width="163"/>
+                        <ComboBox x:Name="cbNombreBuscar" Width="134" Height="29" 
+                                  
+                        IsEditable="True"
+                        StaysOpenOnEdit="True"
+                        TextBoxBase.TextChanged="cbNombreBuscar_TextChanged"/>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Ingrese al Alumno" Style="{StaticResource textosPresentacion}" FontSize="15" Width="163"/>
+                        <ComboBox x:Name="cbCarreraBuscar" Width="134" Height="29" 
+                        IsEditable="True"
+                        StaysOpenOnEdit="True"
+                        TextBoxBase.TextChanged="cbCarreraBuscar_TextChanged"/>
+                    </StackPanel>
+                    <DataGrid x:Name="dgresultados"></DataGrid>
+                </StackPanel>
+            </Grid>
+        </Border>
 
     </Grid>
 </UserControl>

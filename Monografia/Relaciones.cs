@@ -14,13 +14,8 @@ namespace Monografia
             public int IdProfesor { get; set; }
             public int IdMonoGrafia { get; set; }
             public int Rol { get; set; }
-            public Mono_Profesores(int id, int idProfesor, int idMonoGrafia)
-            {
-                Id = id;
-                IdProfesor = idProfesor;
-                IdMonoGrafia = idMonoGrafia;
-            }
-            /*
+
+        /*
                 CREATE TABLE Mono_Profesores
                 (
                     Id INT PRIMARY KEY IDENTITY(1,1),
@@ -32,8 +27,7 @@ namespace Monografia
                     FOREIGN KEY (Rol) REFERENCES Roles(Id)
                 );
 
-            */
-
+        */
         }
 
 
@@ -43,14 +37,9 @@ namespace Monografia
             public int Id { get; set; }
             public string Carnet { get; set; }
             public int IdMonoGrafia { get; set; }
-            public Estudiante_Mono(int id, string carnet, int idMonoGrafia)
-            {
-                Id = id;
-                Carnet = carnet;
-                IdMonoGrafia = idMonoGrafia;
-            }
-            /*
-               CREATE TABLE Estudiante_Mono
+        
+        /*
+                CREATE TABLE Estudiante_Mono
                 (
                     Id INT PRIMARY KEY IDENTITY(1,1),
                     Carnet NVARCHAR(11) NOT NULL,
@@ -59,7 +48,7 @@ namespace Monografia
                     FOREIGN KEY (IdMonoGrafia) REFERENCES MonoGrafias(Id)
                 );
 
-            */
+        */
         }
     
 }

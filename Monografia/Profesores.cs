@@ -9,22 +9,11 @@ namespace Monografia
     public class Profesores
     {
         public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
-        public string Dirrecion { get; set; }
-        public string Telefono { get; set; }
-        public DateTime AñoNac { get; set; }
-
-        public Profesores(int id,string nombre, string apellido, string dirrecion, string telefono, DateTime añoNac)
-        {
-            Id = id;
-            Nombre = nombre;
-            Apellido = apellido;
-            Dirrecion = dirrecion;
-            Telefono = telefono;
-            AñoNac = añoNac;
-        }
-
+        public string Nombre { get; set; } = null!;
+        public string Apellido { get; set; } = null!;
+        public string Dirrecion { get; set; } = null!;
+        public string Telefono { get; set; } = null!;
+        public DateTime FechaNac { get; set; }
 
         /*
             CREATE TABLE Profesores

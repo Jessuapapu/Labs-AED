@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CapaNegocios;
 
 namespace Labs_AED
 {
@@ -21,110 +22,295 @@ namespace Labs_AED
     /// </summary>
     public partial class MonografiasAdminAgr : UserControl
     {
-        private List<Estudiantes> Estu = new List<Estudiantes>();
-        private List<Profesores> Prof = new List<Profesores>();
+ 
+        ServicioEstudiante ServicioEstudiante = new ServicioEstudiante();
+        List<Estudiantes> Estudiantes = new List<Estudiantes>();
 
-        public event Action<List<Estudiantes>> ActuEstudiantes;
-        public event Action<List<Profesores>> ActuProfesores;
+        ServicioProfesor ServicioProfesor = new ServicioProfesor();
+        List<Profesores> Profesores = new List<Profesores>();
 
+        ServicioCarreras ServicioCarreras = new ServicioCarreras();
+        List<Carreras> Carreras = new List<Carreras>();
+
+
+        Estudiantes Estudiante = new Estudiantes();
+        Profesores Profesor = new Profesores();
+
+        int id = 0;
         public MonografiasAdminAgr()
         {
             InitializeComponent();
-        }
-
-
-        private void EnviarListas()
-        {
-            ActuEstudiantes?.Invoke(Estu);
-            MessageBox.Show("Estudiantes enviados");
+            refrescarlistas();
             
-            MessageBox.Show("Profesores enviados");
         }
+
+
 
         private void agregarEstudiante_Click(object sender, RoutedEventArgs e)
         {
-            try { 
-                Estudiantes estudiante = new Estudiantes(txtCarnet.Text, txtNombre.Text, txtApellido.Text, txtDirrecion.Text, txtTelefono.Text, DateTime.Parse(dpFechaNac.Text));
-
-                Estu.Add(estudiante);
-                
-            }
-            catch
+           refrescarlistas();
+            
+            var veri = Estudiantes.Where(x => x.Carnet == txtCarnet.Text).FirstOrDefault();
+            if (veri != null)
             {
-                MessageBox.Show("Ingrese correctamente los datos del estudiante");
-                return;
+                actualizarAlumno();
+               
             }
-            EnviarListas();
+            else
+            {
+                ingresarEstu();
+            }
+            refrescarlistas();
         }
 
         private void agregarProfesor_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if(txtNombrePR.Text == "" || txtApellidoPR.Text == "" ||
+                dpFechaNacPR.SelectedDate == null || txtDirrecionPR.Text == "" ||
+                txtTelefonoPR.Text == "" || dpFechaNacPR.Text == "")
             {
-                Profesores profesor = new Profesores(Prof.Count(),txtNombrePR.Text, txtApellidoPR.Text, txtDirrecionPR.Text, txtTelefonoPR.Text, DateTime.Parse(dpFechaNacPR.Text));
-                Prof.Add(profesor);
-                ActuProfesores?.Invoke(Prof);
-            }
-            catch
-            {
-                MessageBox.Show("Ingrese correctamente los datos del profesor");
+                MessageBox.Show("Por favor llene todos los campos");
                 return;
             }
-            EnviarListas();
+            ingresarProfesor();
+
         }
 
-        private void txtApellidoX_TextChanged(object sender, TextChangedEventArgs e)
+        private void ActualizarProfesor_Click(object sender, RoutedEventArgs e)
         {
-            // Consulta de estudiantes
-            var queryEstudiantes = from estudiante in Estu
-                                   where estudiante.Apellido == txtApellidoX.Text
-                                   select estudiante;
-
-            // Consulta de profesores
-            var queryProfesores = from profesor in Prof
-                                  where profesor.Apellido == txtApellidoX.Text
-                                  select profesor;
-
-            dgResult.Items.Clear();
-            dgResult.ItemsSource = queryEstudiantes;
-            dgResult.ItemsSource = queryProfesores;
-            dgResult.Items.Refresh();
+            if(id == 0) {
+                MessageBox.Show("Por favor seleccione un profesor");
+                return;
+            }
+            if (txtNombrePR.Text == "" || txtApellidoPR.Text == "" ||
+                dpFechaNacPR.SelectedDate == null || txtDirrecionPR.Text == "" ||
+                txtTelefonoPR.Text == "" || dpFechaNacPR.Text == "")
+            {
+                MessageBox.Show("Por favor llene todos los campos");
+                return;
+            }
+            ActualizarProfesor();
         }
 
-        private void dpFechaX_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+
+        void refrescarlistas()
         {
-            // Consulta de estudiantes
-            var queryEstudiantes = from estudiante in Estu
-                                   where estudiante.AñoNac == DateTime.Parse(dpFechaX.Text)
-                                   select estudiante;
+            Estudiantes = ServicioEstudiante.ObtenerEstudiantes();
+            Profesores = ServicioProfesor.ObtenerProfesores();
+            Carreras = ServicioCarreras.ObtenerCarreras();
 
-            // Consulta de profesores
-            var queryProfesores = from profesor in Prof
-                                  where profesor.AñoNac == DateTime.Parse(dpFechaX.Text)
-                                  select profesor;
+            dgEstudiantes.ItemsSource = null;
+            dgProfesores.ItemsSource = null;
 
-            dgResult.Items.Clear();
-            dgResult.ItemsSource = queryEstudiantes;
-            dgResult.ItemsSource = queryProfesores;
-            dgResult.Items.Refresh();
+            dgProfesores.ItemsSource = Profesores;
+            dgEstudiantes.ItemsSource = Estudiantes;
+        }
+        void ingresarEstu()
+        {
+            if (txtNombre.Text == "" || txtApellido.Text == "" ||
+                dpFechaNac.SelectedDate == null || txtCarnet.Text == "" ||
+                txtDirrecion.Text == "" || txtTelefono.Text == "" || dpFechaNac.Text == "")
+            {
+                MessageBox.Show("Por favor llene todos los campos");
+                return;
+            }
+
+            Estudiante.Nombre = txtNombre.Text;
+            Estudiante.Apellido = txtApellido.Text;
+            Estudiante.FechaNac = dpFechaNac.SelectedDate.Value;
+            Estudiante.Carnet = txtCarnet.Text;
+
+            var Id_carrera = from c in Carreras where c.Nombre == cbcarrera.Text select c.ID;
+
+            Estudiante.Id_Carrera = Id_carrera.First();
+            Estudiante.Dirrecion = txtDirrecion.Text;
+            Estudiante.Telefono = txtTelefono.Text;
+
+            ServicioEstudiante.AgregarEstudiante(Estudiante);
+            MessageBox.Show("Estudiante agregado");
+            refrescarlistas();
         }
 
-        private void txtNombreX_TextChanged(object sender, TextChangedEventArgs e)
+        void actualizarAlumno() 
         {
-            // Consulta de estudiantes
-            var queryEstudiantes = from estudiante in Estu
-                                   where estudiante.Nombre == txtNombreX.Text
-                                   select estudiante;
+        
+            var estudiante = Estudiantes.Where(x => x.Carnet == txtCarnet.Text).FirstOrDefault();
+            if (estudiante != null) {
+                estudiante.Nombre = txtNombre.Text;
+                estudiante.Apellido = txtApellido.Text;
+                estudiante.FechaNac = dpFechaNac.SelectedDate.Value;
+                estudiante.Carnet = txtCarnet.Text;
 
-            // Consulta de profesores
-            var queryProfesores = from profesor in Prof
-                                  where profesor.Nombre == txtNombreX.Text
-                                  select profesor;
+                var Id_carrera = from c in Carreras where c.Nombre == cbcarrera.Text select c.ID;
 
-            dgResult.Items.Clear();
-            dgResult.ItemsSource = queryEstudiantes;
-            dgResult.ItemsSource = queryProfesores;
-            dgResult.Items.Refresh();
+                estudiante.Id_Carrera = Id_carrera.First();
+                estudiante.Dirrecion = txtDirrecion.Text;
+                estudiante.Telefono = txtTelefono.Text;
+
+                ServicioEstudiante.ModificarEstudiante(estudiante.Carnet,estudiante);
+                MessageBox.Show("Estudiante actualizado");
+                refrescarlistas();
+            }
+
+        }
+
+        void ingresarProfesor()
+        {
+            if (txtNombrePR.Text == "" || txtApellidoPR.Text == "" ||
+             dpFechaNacPR.SelectedDate == null || txtDirrecionPR.Text == "" ||
+             txtTelefonoPR.Text == "" || dpFechaNacPR.Text == "")
+            {
+                MessageBox.Show("Por favor llene todos los campos");
+                return;
+            }
+
+            Profesor.Nombre = txtNombrePR.Text;
+            Profesor.Apellido = txtApellidoPR.Text;
+            Profesor.FechaNac = dpFechaNacPR.SelectedDate.Value;
+            Profesor.Dirrecion = txtDirrecionPR.Text;
+            Profesor.Telefono = txtTelefonoPR.Text;
+
+            MessageBox.Show("Profesor agregado");
+            ServicioProfesor.AgregarProfesor(Profesor);
+            refrescarlistas();
+        }
+
+        void ActualizarProfesor() 
+        {
+            if (txtNombrePR.Text == "" || txtApellidoPR.Text == "" ||
+                 dpFechaNacPR.SelectedDate == null || txtDirrecionPR.Text == "" ||
+                 txtTelefonoPR.Text == "" || dpFechaNacPR.Text == "")
+            {
+                MessageBox.Show("Por favor llene todos los campos");
+                return;
+            }
+
+            var profesor = Profesores.Where(x => x.Id == id).FirstOrDefault();
+            if (profesor != null) {
+                profesor.Nombre = txtNombrePR.Text;
+                profesor.Apellido = txtApellidoPR.Text;
+                profesor.FechaNac = dpFechaNacPR.SelectedDate.Value;
+                profesor.Dirrecion = txtDirrecionPR.Text;
+                profesor.Telefono = txtTelefonoPR.Text;
+
+                ServicioProfesor.ModificarProfesor(id, profesor);
+                MessageBox.Show("Profesor actualizado");
+                refrescarlistas();
+            }
+
+        }
+
+        private void cbcarrera_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is ComboBox comboBox && comboBox.IsEditable)
+            {
+                var text = comboBox.Text;
+
+                var carrerasFiltradas = from c in Carreras where c.Nombre.Contains(text) select c.Nombre;
+                comboBox.ItemsSource = carrerasFiltradas;
+                comboBox.Text = text;
+                comboBox.IsDropDownOpen = carrerasFiltradas.Any();
+            }
+            refrescarlistas();
+        }
+
+        private void dgEstudiantes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(dgEstudiantes.SelectedItem != null)
+            {
+                var estudiante = (Estudiantes)dgEstudiantes.SelectedItem;
+                txtNombre.Text = estudiante.Nombre;
+                txtApellido.Text = estudiante.Apellido;
+                dpFechaNac.SelectedDate = estudiante.FechaNac;
+                txtCarnet.Text = estudiante.Carnet;
+                txtDirrecion.Text = estudiante.Dirrecion;
+                txtTelefono.Text = estudiante.Telefono;
+                cbcarrera.Text = Carreras.Where(x => x.ID == estudiante.Id_Carrera).FirstOrDefault().Nombre;
+            }
+        }
+
+        private void dgProfesores_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if( dgProfesores.SelectedItem != null)
+            {
+                var profesor = (Profesores)dgProfesores.SelectedItem;
+                txtNombrePR.Text = profesor.Nombre;
+                txtApellidoPR.Text = profesor.Apellido;
+                dpFechaNacPR.SelectedDate = profesor.FechaNac;
+                txtDirrecionPR.Text = profesor.Dirrecion;
+                txtTelefonoPR.Text = profesor.Telefono;
+                id = profesor.Id;
+            }
+        }
+
+        private void cbNombreProfesor_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(sender is ComboBox comboBox && comboBox.IsEditable)
+            {
+                var text = comboBox.Text;
+
+                var profesoresFiltrados = from p in Profesores where (p.Nombre.ToLower()).Contains(text.ToLower()) select p.Nombre;
+                comboBox.ItemsSource = profesoresFiltrados;
+                comboBox.Text = text;
+                comboBox.IsDropDownOpen = profesoresFiltrados.Any();
+
+                dgResultProfesores.ItemsSource = null;
+                dgResultProfesores.ItemsSource = profesoresFiltrados;
+            }
+        }
+
+        private void cbNombreAlumno_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(sender is ComboBox comboBox && comboBox.IsEditable)
+            {
+                var text = comboBox.Text;
+
+                var alumnosFiltrados = from a in Estudiantes where (a.Nombre.ToLower()).Contains(text.ToLower()) select a;
+                var alumnosFiltrados2 = from a in alumnosFiltrados select (a.Nombre + " " + a.Carnet);
+
+                comboBox.ItemsSource = alumnosFiltrados2;
+                comboBox.Text = text;
+                comboBox.IsDropDownOpen = alumnosFiltrados.Any();
+
+                dgResultAlumnos.ItemsSource = null;
+                dgResultAlumnos.ItemsSource = alumnosFiltrados;
+            }
+        }
+
+        private void cbCarnet_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (sender is ComboBox comboBox && comboBox.IsEditable)
+            {
+                var text = comboBox.Text;
+
+                var alumnosFiltrados = from a in Estudiantes where (a.Carnet.ToLower()).Contains(text.ToLower()) select a;
+                var alumnosFiltrados2 = from a in alumnosFiltrados select (a.Nombre + "" + a.Carnet);
+                comboBox.ItemsSource = alumnosFiltrados2;
+                comboBox.Text = text;
+                comboBox.IsDropDownOpen = alumnosFiltrados.Any();
+
+                dgResultAlumnos.ItemsSource = null;
+                dgResultAlumnos.ItemsSource = alumnosFiltrados;
+            }
+        }
+
+        private void cbCarrera_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+            if(sender is ComboBox comboBox && comboBox.IsEditable)
+            {
+                var text = comboBox.Text;
+
+              
+                var estudiantescarreras  = from c in Carreras join es in Estudiantes on c.ID equals es.Id_Carrera where c.Nombre.Contains(text) select es;
+                var estudiantescarreras2 = from c in Carreras where c.Nombre.Contains(text) select c.Nombre;
+
+                comboBox.ItemsSource = estudiantescarreras2;
+                comboBox.Text = text;
+                comboBox.IsDropDownOpen = estudiantescarreras.Any();
+
+                dgResultAlumnos.ItemsSource = null;
+                dgResultAlumnos.ItemsSource = estudiantescarreras;
+            }
         }
     }
 }

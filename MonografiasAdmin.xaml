@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Labs_AED"
              mc:Ignorable="d" 
 
-             d:DesignHeight="570" d:DesignWidth="836">
+             d:DesignHeight="762" d:DesignWidth="1700">
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -19,93 +19,119 @@
     </UserControl.Resources>
 
     <Grid>
-        <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundUsercontrol}" HorizontalAlignment="Center" Height="570" VerticalAlignment="Center" Width="836">
+        <Border Style="{StaticResource PanelesAplicacion}" Background="{StaticResource BackgroundUsercontrol}" HorizontalAlignment="Center" Height="762" VerticalAlignment="Center" Width="1473">
             <Grid>
 
-                <StackPanel Margin="22,10,539,356">
+                <TextBlock Text="Administrar Monografias" FontSize="25" Style="{StaticResource textosPresentacion}" HorizontalAlignment="Center" Margin="0,0,0,723" Width="Auto" Height="Auto"/>
+                <TextBlock Text="Ingreso de monografias"  Style="{StaticResource textosPresentacion}" Margin="218,52,923,666" FontSize="30"/>
 
-                    <StackPanel Orientation="Horizontal" Width="269">
-                        <TextBlock Text="Ingrese el Titulo" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="132"/>
-                        <TextBox x:Name="txtTitulo" Width="137" Height="29"/>
+                <!--Panel del ingreso-->
+                <StackPanel Margin="80,101,756,445" Orientation="Horizontal">
+
+                    <!--Panel del ingreso necesario-->
+                    <StackPanel>
+
+                        <TextBlock Text="Datos Obligatorios" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="126"/>
+
+                        <StackPanel Orientation="Horizontal" Width="269">
+                            <TextBlock Text="Ingrese el Titulo" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="132"/>
+                            <TextBox x:Name="txtTitulo" Width="134" Height="29"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Width="269">
+                            <TextBlock Text="Ingrese el Tutor" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="132"/>
+                            <ComboBox x:Name="cbTutor" Width="134" Height="29" 
+                            IsEditable="True"
+                            StaysOpenOnEdit="True"
+                            TextBoxBase.TextChanged="cbTutor_TextChanged"
+                            />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Width="269">
+                            <TextBlock Text="Ingrese la Carrera" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="132"/>
+                            <ComboBox x:Name="cbCarrera" Width="134" Height="29" 
+               IsEditable="True"
+               StaysOpenOnEdit="True"
+               TextBoxBase.TextChanged="cbCarrera_TextChanged"
+              />
+                        </StackPanel>
+
+
+                        <StackPanel Orientation="Horizontal" Height="36" Width="273">
+                            <TextBlock Text="Tiempo Ortogado" FontSize="15" Style="{StaticResource textosPresentacion}" Height="34" Width="133"/>
+                            <ComboBox Name="TimeComboBox" Width="136" SelectedValuePath="1">
+                                <ComboBoxItem>5 minutos</ComboBoxItem>
+                                <ComboBoxItem>10 minutos</ComboBoxItem>
+                                <ComboBoxItem>15 minutos</ComboBoxItem>
+                                <ComboBoxItem>30 minutos</ComboBoxItem>
+                                <ComboBoxItem>45 minutos</ComboBoxItem>
+                                <ComboBoxItem>60 minutos</ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                    </StackPanel>
+                    <!--Panel del ingreso opcional-->
+                    <StackPanel Height="213" Width="340">
+
+                        <TextBlock Text="Datos Opcionales" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="126"/>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Ingrese la nota" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="175"/>
+                            <TextBox x:Name="txtNota" Width="155" Height="29"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="tiempo de defensa" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="175"/>
+                            <TextBox x:Name="txtTDP" Width="155" Height="29"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="tiempo de PRE Y RESP" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="175"/>
+                            <TextBox x:Name="txtTPYR" Width="155" Height="29"/>
+                        </StackPanel>
+
                     </StackPanel>
 
-
-                    <StackPanel Orientation="Horizontal" Width="269">
-                        <TextBlock Text="Ingrese el Tutor" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="131"/>
-                        <ComboBox x:Name="cbTutor" Width="138" Height="29"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" Width="269">
-                        <TextBlock Text="Ingrese la Carrera" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="130"/>
-                        <TextBox x:Name="txtCarrera" Width="138" Height="29"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" Height="36">
-                        <TextBlock Text="Ingrese la fecha" FontSize="15" Style="{StaticResource textosPresentacion}" Height="34" Width="132"/>
-                        <DatePicker x:Name="dpFecha" Width="138" Height="34"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" Height="36">
-                        <TextBlock Text="Tiempo Ortogado" FontSize="15" Style="{StaticResource textosPresentacion}" Height="34" Width="133"/>
-                        <ComboBox Name="TimeComboBox" Width="139">
-                            <ComboBoxItem>5 minutos</ComboBoxItem>
-                            <ComboBoxItem>10 minutos</ComboBoxItem>
-                            <ComboBoxItem>15 minutos</ComboBoxItem>
-                            <ComboBoxItem>30 minutos</ComboBoxItem>
-                            <ComboBoxItem>45 minutos</ComboBoxItem>
-                            <ComboBoxItem>60 minutos</ComboBoxItem>
-                        </ComboBox>
-                    </StackPanel>
-
+                    <!-- fin Panel del ingreso-->
                 </StackPanel>
-                <Button Height="41" Width="90" Content="Guardar" Margin="311,10,431,515"/>
 
-                <StackPanel Margin="464,215,0,6" HorizontalAlignment="Left" Width="365">
+                <StackPanel Margin="775,282,0,36" HorizontalAlignment="Left" Width="552">
 
-                    <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Buscar Monografias" Height="48" Width="231" Style="{StaticResource textosPresentacion}" FontSize="25" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
                         <TextBlock Text="Ingrese el Titulo por buscar" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="193"/>
-                        <TextBox x:Name="txtTituloX" Width="155" Height="29" TextChanged="txtTituloX_TextChanged"/>
+                        <ComboBox x:Name="cbBuscarTitulo" Width="157" Height="29" 
+                           IsEditable="True"
+                           StaysOpenOnEdit="True"
+                           TextBoxBase.TextChanged="cbBuscarTitulo_TextChanged"
+                        />
                     </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Height="54">
-                        <TextBlock Text="Ingrese la fecha por buscar" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="193"/>
-                        <DatePicker x:Name="dpFechaX" Width="156" Height="42"/>
-                    </StackPanel>
 
-                    <StackPanel Orientation="Horizontal" Height="31">
+                    <StackPanel Orientation="Horizontal" Height="43" HorizontalAlignment="Center" Width="351" >
                         <TextBlock Text="Ingrese el tutor por buscar" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="193"/>
-                        <TextBox x:Name="txtTutorX" Width="155" Height="29" TextChanged="txtTutorX_TextChanged"/>
+                        <ComboBox x:Name="cbBuscarportutor" Width="157" Height="29" 
+                           IsEditable="True"
+                           StaysOpenOnEdit="True"
+                           TextBoxBase.TextChanged="cbBuscarportutor_TextChanged"
+                          />
                     </StackPanel>
 
-                    <DataGrid Height="198"></DataGrid>
+
+                    <DataGrid Height="314" x:Name="dgMonoGrafiasbuscar" SelectionChanged="dgMonoGrafiasbuscar_SelectionChanged" IsReadOnly="True"/>
+
 
                 </StackPanel>
 
-                <DataGrid Margin="10,218,385,9"></DataGrid>
+
+                <!--Botones Sueltos o cosas Sueltas-->
+                <DataGrid x:Name="dgMonoGrafias" Margin="80,326,785,35" IsReadOnly="True" SelectionChanged="dgMonoGrafias_SelectionChanged"/>
+
+                <Button x:Name="Guardar" Content="Guardar" HorizontalAlignment="Left" Height="39" Margin="276,282,0,0" VerticalAlignment="Top" Width="212" Click="Guardar_Click_1"/>
 
 
-                <StackPanel Margin="464,0,10,356">
-                    <TextBlock Text="Datos Opcionales" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="193"/>
-
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Ingrese la nota" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="175"/>
-                        <TextBox x:Name="txtNota" Width="155" Height="29"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="tiempo de defensa" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="175"/>
-                        <TextBox x:Name="txtTDP" Width="155" Height="29"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="tiempo de PRE Y RESP" FontSize="15" Style="{StaticResource textosPresentacion}" Height="35" Width="175"/>
-                        <TextBox x:Name="txtTPYR" Width="155" Height="29"/>
-                    </StackPanel>
-
-                    <Button Height="41" Width="129" Content="Guardar"/>
-                </StackPanel>
-                
             </Grid>
         </Border>
+
+        
     </Grid>
 </UserControl>

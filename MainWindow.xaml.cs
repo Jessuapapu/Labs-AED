@@ -18,22 +18,9 @@ namespace Labs_AED
     public partial class MainWindow : Window
     {
 
-        private MonografiasAdmin monografiasAdmin;
-        private MonografiasAdminAgr monografiasAdminAgr;
-
         public MainWindow()
         {
             InitializeComponent();
-
-            monografiasAdmin = new MonografiasAdmin();
-            monografiasAdminAgr = new MonografiasAdminAgr();
-
-            // Agregar los controles al StackPanel
-            miStackPanel.Children.Add(monografiasAdmin);
-            miStackPanel.Children.Add(monografiasAdminAgr);
-
-            // Suscribir el evento
-            monografiasAdminAgr.ActuProfesores += monografiasAdmin.RecibirProfesores;
 
         }
 
@@ -65,15 +52,16 @@ namespace Labs_AED
 
         private void btnIglesia_Click(object sender, RoutedEventArgs e)
         {
-            MostrarControl(MonografiasAdminAgr);
-            OcultarVisibilidad(MonografiasAdmin);
-
+           MostrarControl(MonografiasAdmin);
+            OcultarVisibilidad(MonografiasAdminAgr);
+            OcultarVisibilidad(MonoRelaciones);
         }
 
         private void btnClinica_Click(object sender, RoutedEventArgs e)
         {
-            MostrarControl(MonografiasAdmin);
-            OcultarVisibilidad(MonografiasAdminAgr);
+            MostrarControl(MonografiasAdminAgr);
+            OcultarVisibilidad(MonografiasAdmin);
+            OcultarVisibilidad(MonoRelaciones);
         }
 
         private void OcultarVisibilidad(UserControl control)
@@ -94,6 +82,18 @@ namespace Labs_AED
                 aparecer.Begin(control);
                 control.Visibility = Visibility.Visible;
             }
+        }
+
+        private void MonografiasAdmin_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Relaciones_Click(object sender, RoutedEventArgs e)
+        {
+            MostrarControl(MonoRelaciones);
+            OcultarVisibilidad(MonografiasAdmin);
+            OcultarVisibilidad(MonografiasAdminAgr);
         }
     }
 }

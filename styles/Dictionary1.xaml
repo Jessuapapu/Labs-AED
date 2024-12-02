@@ -2,15 +2,15 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <!-- colores primarios -->
-    <SolidColorBrush x:Key="BackgroundGeneral" Color="#31293F"/>
+    <SolidColorBrush x:Key="BackgroundGeneral" Color="#003782"/>
     <SolidColorBrush x:Key="Bordes" Color="Transparent"/>
-    <SolidColorBrush x:Key="BackgroundSecundario" Color="#554D74"/>
+    <SolidColorBrush x:Key="BackgroundSecundario" Color="#FFFF"/>
     <SolidColorBrush x:Key="BackgroundHeader" Color="#A6A9C8"/>
-    <SolidColorBrush x:Key="BackgroundUsercontrol" Color="#796EA8"/>
-    <SolidColorBrush x:Key="LetrasGeneral" Color="#31293F"/>
+    <SolidColorBrush x:Key="BackgroundUsercontrol" Color="#FFFF"/>
+    <SolidColorBrush x:Key="LetrasGeneral" Color="White"/>
 
     <!-- Colores boton -->
-    <SolidColorBrush x:Key="ColorBoton" Color="#31293F"/>
+    <SolidColorBrush x:Key="ColorBoton" Color="#003782"/>
     <SolidColorBrush x:Key="ColorBotonHover" Color="#4D4D4D"/>
     <SolidColorBrush x:Key="ColorBotonPresionado" Color="#4D4D4D"/>
     <SolidColorBrush x:Key="ColorLetras" Color="#A6A9C8"/>
@@ -152,22 +152,16 @@
     </Style>
     
     <!-- estilos para los textos general -->
-    <Style TargetType="TextBlock">
+    <Style TargetType="TextBlock" x:Key="textosPresentacion">
 
-        <Setter Property="Foreground" Value="{StaticResource ColorLetras}"/>
+        <Setter Property="Foreground" Value="{StaticResource BackgroundGeneral}"/>
         <Setter Property="FontFamily" Value="Arial"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Padding" Value="10,5"/>
+        <Setter Property="FontFamily" Value="Times New Roman"/>
     </Style>
 
-    <Style TargetType="TextBlock" x:Key="textosPresentacion">
-         <Setter Property="Foreground" Value="{StaticResource LetrasGeneral}"/>
-        <Setter Property="FontFamily" Value="Times New Roman"/>
-        <Setter Property="FontSize" Value="24"/>
-        <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Padding" Value="10,5"/>
-    </Style>
     
     <!-- Estilos para el TextBox -->
     <Style TargetType="TextBox">
@@ -200,7 +194,7 @@
         <Setter Property="Background" Value="{StaticResource BackgroundGeneral}"/>
         <Setter Property="BorderBrush" Value="{StaticResource Bordes}"/>
         <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="Foreground" Value="#554D74"/>
+        <Setter Property="Foreground" Value="White"/>
         <Setter Property="IsEnabled" Value="False"/>
         <Setter Property="AutoGenerateColumns" Value="False"/>
         <Setter Property="CanUserAddRows" Value="False"/>
@@ -212,7 +206,7 @@
 
     <!-- Estilo para el encabezado del DataGrid -->
     <Style TargetType="DataGridColumnHeader">
-        <Setter Property="Background" Value="#31293F"/>
+        <Setter Property="Background" Value="{StaticResource BackgroundGeneral}"/>
         <Setter Property="Foreground" Value="#ffffff"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Height" Value="30"/>
@@ -220,8 +214,8 @@
 
     <!-- Estilo para las filas del DataGrid -->
     <Style TargetType="DataGridRow">
-        <Setter Property="Background" Value="#ffffff"/>
-        <Setter Property="Foreground" Value="#000"/>
+        <Setter Property="Background" Value="#00204d"/>
+        <Setter Property="Foreground" Value="White"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="BorderBrush" Value="#cccccc"/>
         <Setter Property="BorderThickness" Value="0,0,0,1"/>
@@ -282,6 +276,11 @@
         <Setter Property="Margin" Value="10,0,0,0"/>
         <Setter Property="Text" Value="0"/>
         <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
+
+
+    <Style TargetType="ComboBox" x:Key="ComboBoxAutocompleatado">
+        <Setter Property="IsTextSearchEnabled" Value="False"/>
     </Style>
 
 </ResourceDictionary>

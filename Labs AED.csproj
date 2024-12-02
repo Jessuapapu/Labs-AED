@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CapaNegocios\CapaNegocios.csproj" />
     <ProjectReference Include="..\Clinica\Clinica.csproj" />
     <ProjectReference Include="..\Feligreses\Feligreses.csproj" />
     <ProjectReference Include="Monografia\Monografia.csproj" />
